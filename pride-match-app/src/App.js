@@ -6,7 +6,7 @@ function App() {
     return (
         <div className="App">
             <NavigationBar/>
-            <h1>Top 10 Games</h1>
+            {/*<h1>Home</h1>*/}
         </div>
     );
 }
