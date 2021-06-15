@@ -1,0 +1,17 @@
+.games-padding {
+    margin-bottom: 10px;
+}
+
+.game-card {
+    height: 100%;
+}
+
+.game-card Img {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.game-card:hover {
+    border-color: cornflowerblue;
+}

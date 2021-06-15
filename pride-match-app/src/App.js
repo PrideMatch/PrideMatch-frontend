@@ -3,18 +3,23 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import NavigationBar from "./components/NavigationBar";
 import {Container, Row, Col, Card} from "react-bootstrap";
 import GameCard from "./components/landing/GameCard"
+import LoL1 from "./assets/LoLGame.jpg";
+import valorant from "./assets/valorant.jpg";
+import "./components/landing/landing.css"
 
 function App() {
-    const game1 = "Game 1!"
+    const game1 = "League of Legends"
+    const game2 = "Valorant"
+    const Lol1 = LoL1
+    const Lol2 = valorant
     return (
         <div className="App">
             <NavigationBar/>
             <h1>Add Search Form?</h1>
                 <h2>Top 10 Games</h2>
-                <Row className="game-container" xs={1} md={3} lg={5}>
-                        <Col className="games-padding">
-                            <GameCard gameName={game1}/>
-                        </Col>
+                <Row className="game-container" xs={1} md={2} lg={4}>
+                    <GameCard gameID={"1"} gameName={game1} gamePic={Lol1}/>
+                    <GameCard gameID={"2"} gameName={game2} gamePic={Lol2}/>
                 </Row>
         </div>
     );
