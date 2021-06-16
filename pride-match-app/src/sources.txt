@@ -3,3 +3,7 @@ Found and Used on June 16th, 2021
 
 react-notifications: https://www.npmjs.com/package/react-notifications
 Used on June 16th, 2021
+
+Terms that describe attraction, behaviour, and orientation:
+https://www.healthline.com/health/different-types-of-sexuality#m-p
+Found on June 16th, 2021

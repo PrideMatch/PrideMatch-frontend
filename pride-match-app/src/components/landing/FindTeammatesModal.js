@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {Button, Modal} from "react-bootstrap"
-import "./landing.css"
+import "./Landing.css"
 import DisplayTeammates from "./DisplayTeammates"
 
 export class FindTeammatesModal extends Component {

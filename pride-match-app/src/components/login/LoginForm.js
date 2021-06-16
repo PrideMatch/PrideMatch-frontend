@@ -2,7 +2,7 @@ import {Component} from "react";
 import { Form, Button, Col, Container, Nav } from "react-bootstrap"
 import { NotificationManager } from "react-notifications";
 import { NOTIFICATION_TIMER } from "../../constants"
-import "./login.css"
+import "./Login.css"
 
 export class LoginForm extends Component {
     constructor(props) {

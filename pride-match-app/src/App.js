@@ -5,7 +5,7 @@ import { Row } from "react-bootstrap";
 import GameCard from "./components/landing/GameCard"
 import LoL1 from "./assets/LoLGame.jpg";
 import valorant from "./assets/valorant.jpg";
-import "./components/landing/landing.css"
+import "./components/landing/Landing.css"
 
 function App() {
     const game1 = "League of Legends"
