@@ -5,6 +5,7 @@ import Login from "./pages/Login"
 import App from "./App"
 import 'react-notifications/lib/notifications.css'
 import {NotificationContainer} from "react-notifications"
+import Register from "./pages/Register";
 
 export const Routes = (props) => {
 
@@ -23,6 +24,9 @@ export const Routes = (props) => {
                 </Route>
                 <Route exact path="/login">
                     <Login />
+                </Route>
+                <Route exact path="/register">
+                    <Register />
                 </Route>
             </Switch>
         </div>
