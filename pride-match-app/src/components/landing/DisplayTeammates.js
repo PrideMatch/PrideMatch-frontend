@@ -7,6 +7,7 @@ export class DisplayTeammates extends Component {
         return (
             <Row>
                 {/*TODO map through all teammates*/}
+                {/*TODO test different # of interests for card size*/}
                 <IndividualTeammate />
                 <IndividualTeammate />
                 <IndividualTeammate />
