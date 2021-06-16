@@ -4,7 +4,7 @@ import { Image, Button, Container } from "react-bootstrap"
 import LoginForm from "../components/login/LoginForm";
 import logo from "../assets/PrideMatchLogoCropped.png"
 import login from "../assets/Login.png"
-import {googleProvider} from "../firebase_config/firebase_config/authMethod";
+import {googleProvider} from "../firebase_config/authMethod";
 import socialMediaAuth from "../service/auth"
 
 export class Login extends Component {
