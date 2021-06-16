@@ -1,5 +1,5 @@
 import {Component} from "react";
-import {Button, Card, Col} from "react-bootstrap";
+import {Card, Col} from "react-bootstrap";
 import "./landing.css"
 import FindTeammatesModal from "./FindTeammatesModal";
 

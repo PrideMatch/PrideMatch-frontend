@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {Link} from "react-router-dom";
-import {Navbar, Nav, NavDropdown, DropdownButton} from "react-bootstrap"
+import {Navbar, Nav, NavDropdown} from "react-bootstrap"
 import rainbowLogo from "../assets/PrideMatchRainbow30x30.png"
 import prideMatchWords from "../assets/PrideMatchWords.png"
 import sampleUser from "../assets/SampleUserIcon.png"

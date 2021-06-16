@@ -1,28 +1,14 @@
 import {Component} from "react"
-import {Card, Col, Image, Button} from "react-bootstrap"
+import {Card, Col, Image} from "react-bootstrap"
 import sampleUser from "../../assets/SampleUserIcon.png"
 import ConfirmAddFriend from "./ConfirmAddFriend"
+import {getHobby} from "../../helpers";
 
 export class IndividualTeammate extends Component {
     constructor(props) {
         super(props);
-        this.state = { games: ["League of Legends", "MW3", "BattleField", "Rainbow Six Siege"]}
-    }
-
-    colours = [`rgb(255, 204, 204)`, `rgb(255, 229, 204)`, `rgb(255, 255, 204)`, `rgb(185, 238, 181)`,
-        `rgb(204, 229, 255)`, `rgb(204, 204, 255)`];
-    getColour = () => this.colours[Math.floor(Math.random() * this.colours.length)];
-
-    singleInterest(game) {
-        return <span style={{backgroundColor: this.getColour(),
-            borderRadius: '5px',
-            padding: '2px'}}>{game} </span>
-    }
-
-    multipleInterest(game) {
-        return <span style={{backgroundColor: this.getColour(),
-            borderRadius: '5px',
-            padding: '2px'}}>{game} • </span>
+        this.state = { games: ["League of Legends", "MW3", "BattleField", "Rainbow Six Siege"],
+        interests: ["Swimming", "Sewing", "Drawing"]}
     }
 
     render() {
@@ -39,17 +25,12 @@ export class IndividualTeammate extends Component {
                     <Card.Body>
                         <Card.Text className="teammate-text">
                             {this.state.games.map((game, index) => {
-                                if (this.state.games.length === 0) {
-                                    return "No interests"
-                                } else if (this.state.games.length === 1) {
-                                    return this.singleInterest(game)
-                                } else {
-                                    if (index === this.state.games.length-1) {
-                                        return this.singleInterest(game)
-                                    } else {
-                                        return this.multipleInterest(game)
-                                    }
-                                }
+                                return getHobby(this.state.games, game, index)
+                            })}
+                        </Card.Text>
+                        <Card.Text className="teammate-text">
+                            {this.state.interests.map((interest, index) => {
+                                return getHobby(this.state.interests, interest, index)
                             })}
                         </Card.Text>
                     </Card.Body>
