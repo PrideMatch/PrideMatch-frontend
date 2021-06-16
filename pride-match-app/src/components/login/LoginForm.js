@@ -1,6 +1,8 @@
 import {Component} from "react";
 import { Form, Button, Col, Container, Nav } from "react-bootstrap"
-import "./login.css"
+import { NotificationManager } from "react-notifications";
+import { NOTIFICATION_TIMER } from "../../constants"
+import "./Login.css"
 
 export class LoginForm extends Component {
     constructor(props) {
@@ -8,8 +10,18 @@ export class LoginForm extends Component {
         this.state = { loginUsername: "", loginPassword: ""}
     }
 
-    handleClick = () => {
-        // TODO handle login
+    handleSubmit = () => {
+        // TODO go to landing page
+        NotificationManager.success("Welcome back!", "", NOTIFICATION_TIMER)
+        NotificationManager.warning("Incorrect username or password", "", NOTIFICATION_TIMER)
+    }
+
+    setLoginUsername = (e) => {
+        this.setState({loginUsername: e.target.value})
+    }
+
+    setLoginPassword = (e) => {
+        this.setState({loginPassword: e.target.value})
     }
 
     render() {
@@ -21,7 +33,7 @@ export class LoginForm extends Component {
                             <Form.Label>Username</Form.Label>
                             <Form.Control
                                 type="text"
-                                onChange={this.state.loginUsername}
+                                onChange={this.setLoginUsername}
                                 placeholder="Enter username"/>
                         </Form.Group>
                     </Col>
@@ -30,7 +42,7 @@ export class LoginForm extends Component {
                             <Form.Label>Password</Form.Label>
                             <Form.Control
                                 type="password"
-                                onChange={this.state.loginPassword}
+                                onChange={this.setLoginPassword}
                                 placeholder="Enter password"/>
                         </Form.Group>
                     </Col>
@@ -38,9 +50,10 @@ export class LoginForm extends Component {
                     <Button className="colourful-button" onClick={this.handleSubmit}>Login</Button>
                     <br/>
                     <br/>
+                    <br/>
                     <Nav className="justify-content-center">
                         <Nav.Item className = "reference">
-                            <text>Not registered?</text>
+                            <label>Not registered?</label>
                             <Nav.Link href="/register">Click Here!</Nav.Link>
                         </Nav.Item>
                     </Nav>

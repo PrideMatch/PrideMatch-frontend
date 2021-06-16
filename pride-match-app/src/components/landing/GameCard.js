@@ -1,6 +1,6 @@
 import {Component} from "react";
 import {Card, Col} from "react-bootstrap";
-import "./landing.css"
+import "./Landing.css"
 import FindTeammatesModal from "./FindTeammatesModal";
 
 export class GameCard extends Component {
