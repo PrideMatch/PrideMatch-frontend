@@ -2,8 +2,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import NavigationBar from "./components/NavigationBar";
-import socialMediaAuth from './service/auth';
-import { googleProvider } from './firebase_config/firebase_config/authMethod';
 import { Row } from "react-bootstrap";
 import GameCard from "./components/landing/GameCard"
 import LoL1 from "./assets/LoLGame.jpg";
@@ -14,10 +12,7 @@ import "./components/landing/Landing.css"
 import Store from "./store";
 
 function App() {
-    const handleOnClick = async (provider) => {
-        const res = await socialMediaAuth(provider);
-        console.log(res);
-    }
+
     const game1 = "League of Legends"
     const game2 = "Valorant"
     const Lol1 = LoL1
