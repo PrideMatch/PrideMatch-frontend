@@ -46,7 +46,6 @@ export class LoginForm extends Component {
                                 placeholder="Enter password"/>
                         </Form.Group>
                     </Col>
-                    <br/>
                     <Button className="colourful-button" onClick={this.handleSubmit}>Login</Button>
                     <br/>
                     <br/>
