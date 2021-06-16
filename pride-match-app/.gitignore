@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # api info
-firebase_config
+src/firebase_config

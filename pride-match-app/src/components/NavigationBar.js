@@ -6,35 +6,71 @@ import prideMatchWords from "../assets/PrideMatchWords.png"
 import sampleUser from "../assets/SampleUserIcon.png"
 import "./NavigationBar.css"
 
+// Global State
+import {Context} from "../store";
+import React, {useContext} from "react";
+
+// Google Signin
+import socialMediaAuth from '../service/auth'
+import { googleProvider, signOutUser } from '../firebase_config/authMethod';
+
 export class NavigationBar extends Component {
     renderUserNav() {
         return (
-            <div id="user-nav">
-                <NavDropdown
-                    // title={this.props.name}
-                    className="" id="basic-nav-dropdown"  title={"user"}>
-                    <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-                    <Nav.Link as={Link} to="/friends">Friends</Nav.Link>
-                    <Nav.Link as={Link} to="/games">My Games</Nav.Link>
-                    <NavDropdown.Divider />
-                    <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
-                    {/*<a href="#" onClick={this.props.logout}> Logout </a>*/}
-                </NavDropdown>
+            <div>
+                 {this.props.user.isLoggedIn && 
+                  <div id="user-nav">
+                  <NavDropdown
+                      // title={this.props.name}
+                      className="" id="basic-nav-dropdown"  title={this.props.user.name}>
+                      <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
+                      <Nav.Link as={Link} to="/friends">Friends</Nav.Link>
+                      <Nav.Link as={Link} to="/games">My Games</Nav.Link>
+                      <NavDropdown.Divider />
+      
+                      {/* make this dynamic, depending if user is logged in */}
+                      {/* <Nav.Link as={Link} to="/logout">Logout</Nav.Link> */}
+                      {/*<a href="#" onClick={this.props.logout}> Logout </a>*/}
+                      
+                  </NavDropdown>
+                  </div>
+                 }
             </div>
+
         )
-    }
+    };
 
     renderUserPic() {
         return (
             <Nav.Item>
                 <Nav.Link as={Link} to="/profile">
-                    <img src={sampleUser} width="30" height="30" alt="Pride Match logo"/>
+                    <img src={this.props.user.profilePicture} width="30" height="30" alt="Pride Match logo"/>
                 </Nav.Link>
             </Nav.Item>
         )
     }
 
     render() {
+        const handleUserLog = async (provider) => {
+            if (!(this.props.user.isLoggedIn)) {
+                const res = await socialMediaAuth(provider);
+                this.props.setState({...this.props.user, 
+                                        isLoggedIn: true, 
+                                        name: res.displayName,
+                                        profilePicture: res.photoURL,
+                                        sessionToken: res.refreshToken
+                                    })
+                console.log(res)
+            } else if (this.props.user.isLoggedIn) {
+                await signOutUser
+                this.props.setState({...this.props.user, 
+                                        isLoggedIn: false, 
+                                        name: "",
+                                        profilePicture: ""                            
+                                    })
+            }
+
+        }
         return (
             <Navbar bg="light" expand="lg" sticky="top">
                 <Navbar.Brand as={Link} to="/">
@@ -58,10 +94,19 @@ export class NavigationBar extends Component {
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/forums">Forums</Nav.Link>
                     </Nav>
+                    
                     <Nav>
-                        <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                        {
+                        (this.props.user.isLoggedIn) ? 
+                        (<Nav.Link onClick={() => handleUserLog(googleProvider)}>Logout</Nav.Link>)
+                        : 
+                        (<Nav.Link onClick={() => handleUserLog(googleProvider)}>Login</Nav.Link>)
+                        }
+                        {/* <Nav.Link onClick={() => handleUserLog(googleProvider)}>Login</Nav.Link> */}
+                        {/* <Nav.Link as={Link} to="/login">Login</Nav.Link> */}
                         <Nav.Link as={Link} to="/register">Register</Nav.Link>
                     </Nav>
+                    
                     {this.renderUserNav()}
                     {this.renderUserPic()}
                 </Navbar.Collapse>
@@ -70,4 +115,10 @@ export class NavigationBar extends Component {
     }
 }
 
-export default (NavigationBar)
+const FunctionalNavigationBar = () => {
+    const [state, setState] = useContext(Context);
+
+    return <NavigationBar user={state} setState={setState}/>
+}
+
+export default (FunctionalNavigationBar)
