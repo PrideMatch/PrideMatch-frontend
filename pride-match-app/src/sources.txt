@@ -1,2 +1,5 @@
 SampleUserIcon: https://en.wikipedia.org/wiki/File:Sample_User_Icon.png
 Found and Used on June 16th, 2021
+
+react-notifications: https://www.npmjs.com/package/react-notifications
+Used on June 16th, 2021

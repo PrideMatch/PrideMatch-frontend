@@ -1,0 +1,1 @@
+export const NOTIFICATION_TIMER = 2000

@@ -1,3 +1,16 @@
 .App {
   text-align: center;
+  font-family: "Noto Sans", serif
+}
+
+.game-container {
+  padding-right: 10vw;
+  padding-left: 10vw;
+}
+
+.background {
+  background-image: linear-gradient(to right, rgb(255, 204, 204),rgb(255, 229, 204),rgb(255, 255, 204),
+  rgb(185, 238, 181),rgb(204, 229, 255),rgb(204, 204, 255));
+  width: 100vw;
+  min-height: 100vh;
 }

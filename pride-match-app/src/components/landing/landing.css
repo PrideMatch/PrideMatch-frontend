@@ -1,0 +1,51 @@
+.games-padding {
+    margin-bottom: 10px;
+}
+
+.game-card {
+    height: 100%;
+}
+
+.game-card Img {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.game-card:hover {
+    border-color: cornflowerblue;
+}
+
+.background {
+    background-image: linear-gradient(to right, rgb(255, 204, 204),rgb(255, 229, 204),rgb(255, 255, 204),
+    rgb(185, 238, 181),rgb(204, 229, 255),rgb(204, 204, 255));
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.teammate-card {
+    margin-bottom: 10px;
+}
+
+.teammate-card:hover {
+    border-color: rgb(0, 170, 170);
+}
+
+.teammate-img {
+    width: 100px;
+    height: 100px;
+    align-self: center;
+    object-fit: cover;
+}
+
+.teammate-title {
+    align-self: center;
+}
+
+.teammate-text {
+    align-self: center;
+}
+
+
+
+
