@@ -16,24 +16,25 @@ function App() {
         console.log(res);
     }
 
-function App() {
-    const game1 = "League of Legends"
-    const game2 = "Valorant"
-    const Lol1 = LoL1
-    const Lol2 = valorant
-    return (
-        <div className="App background">
-            <NavigationBar/>
-            <button onClick={() => handleOnClick(googleProvider)}>Google Login</button>
-            <h1>Add Search Form?</h1>
+    function App() {
+        const game1 = "League of Legends"
+        const game2 = "Valorant"
+        const Lol1 = LoL1
+        const Lol2 = valorant
+        return (
+            <div className="App background">
+                <NavigationBar/>
+                <button onClick={() => handleOnClick(googleProvider)}>Google Login</button>
+                <h1>Add Search Form?</h1>
                 <h2>Top 10 Games</h2>
                 <Row className="game-container" xs={1} md={2} lg={4}>
                     {/*TODO make games dynamic*/}
                     <GameCard gameID={"1"} gameName={game1} gamePic={Lol1}/>
                     <GameCard gameID={"2"} gameName={game2} gamePic={Lol2}/>
                 </Row>
-        </div>
-    );
+            </div>
+        );
+    }
 }
 
 export default App;
