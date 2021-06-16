@@ -17,6 +17,8 @@ export class NavigationBar extends Component {
                     <Nav.Link as={Link} to="/friends">Friends</Nav.Link>
                     <Nav.Link as={Link} to="/games">My Games</Nav.Link>
                     <NavDropdown.Divider />
+
+                    {/* make this dynamic, depending if user is logged in */}
                     <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
                     {/*<a href="#" onClick={this.props.logout}> Logout </a>*/}
                 </NavDropdown>
