@@ -1,6 +1,7 @@
 import {Component} from "react";
-import {Button, Modal} from "react-bootstrap";
+import {Button, Modal} from "react-bootstrap"
 import "./landing.css"
+import DisplayTeammates from "./DisplayTeammates"
 
 export class FindTeammatesModal extends Component {
     constructor(props) {
@@ -20,12 +21,13 @@ export class FindTeammatesModal extends Component {
         return (
             <div>
                 <Button onClick={this.handleFind}>Find Teammates!</Button>
-                <Modal size={"lg"} show={this.state.showModal} onHide={this.handleClose}>
-                    <Modal.Title>
+                <Modal size={"lg"} show={this.state.showModal} onHide={this.handleClose} scrollable>
+                    <Modal.Header>
                         Find Teammates for {this.props.gameName}
-                    </Modal.Title>
+                    </Modal.Header>
                     <Modal.Body>
-                        User1
+                        {/*TODO get all users interested in this.props.gameName*/}
+                        <DisplayTeammates />
                     </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={this.handleClose}>Close</Button>

@@ -13,7 +13,7 @@ function App() {
     const Lol1 = LoL1
     const Lol2 = valorant
     return (
-        <div className="App">
+        <div className="App background">
             <NavigationBar/>
             <h1>Add Search Form?</h1>
                 <h2>Top 10 Games</h2>

@@ -4,7 +4,7 @@ import NavigationBar from "../components/NavigationBar";
 export class Forums extends Component {
     render() {
         return (
-            <div className="App">
+            <div className="App background">
                 <NavigationBar/>
                 <h1>Forums</h1>
             </div>
