@@ -24,6 +24,16 @@ export class NavigationBar extends Component {
         )
     }
 
+    renderUserPic() {
+        return (
+            <Nav.Item>
+                <Nav.Link as={Link} to="/profile">
+                    <img src={sampleUser} width="30" height="30" alt="Pride Match logo"/>
+                </Nav.Link>
+            </Nav.Item>
+        )
+    }
+
     render() {
         return (
             <Navbar bg="light" expand="lg" sticky="top">
@@ -48,12 +58,11 @@ export class NavigationBar extends Component {
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/forums">Forums</Nav.Link>
                     </Nav>
+                    <Nav>
+                        <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                    </Nav>
                     {this.renderUserNav()}
-                    <Nav.Item>
-                        <Nav.Link as={Link} to="/profile">
-                        <img src={sampleUser} width="30" height="30" alt="Pride Match logo"/>
-                        </Nav.Link>
-                    </Nav.Item>
+                    {this.renderUserPic()}
                 </Navbar.Collapse>
             </Navbar>
         )
