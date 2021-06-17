@@ -7,6 +7,8 @@ import 'react-notifications/lib/notifications.css'
 import {NotificationContainer} from "react-notifications"
 import Register from "./pages/Register";
 import Recommendations from "./pages/Recommendations";
+import GamesForum from "./pages/GamesForum";
+import GeneralForum from "./pages/GeneralForum";
 
 export const Routes = (props) => {
 
@@ -31,6 +33,12 @@ export const Routes = (props) => {
                 </Route>
                 <Route exact path="/register">
                     <Register />
+                </Route>
+                <Route exact path="/forums/games">
+                    <GamesForum />
+                </Route>
+                <Route exact path="/forums/general">
+                    <GeneralForum />
                 </Route>
             </Switch>
         </div>

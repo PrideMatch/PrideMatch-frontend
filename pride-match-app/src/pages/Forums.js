@@ -4,7 +4,7 @@ import forums from "../assets/forums.png";
 import games from "../assets/games.png";
 import general from "../assets/general.png";
 import {Image} from "react-bootstrap";
-import GameForum from "../components/forums/GameForum"
+import Forum from "../components/forums/Forum"
 
 export class Forums extends Component {
     render() {
@@ -14,9 +14,10 @@ export class Forums extends Component {
                 <Image src={forums} alt="Forums"/>
                 <br/>
                 <Image src={games} alt="Games"/>
-                <GameForum />
+                <Forum type="games"/>
                 <br/>
                 <Image src={general} alt="General"/>
+                <Forum type="general"/>
             </div>
         )
     }
