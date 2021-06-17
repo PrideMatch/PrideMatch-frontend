@@ -6,7 +6,7 @@ import App from "./App"
 import 'react-notifications/lib/notifications.css'
 import {NotificationContainer} from "react-notifications"
 import Register from "./pages/Register";
-import Recommendations from "./pages/Recommendations
+import Recommendations from "./pages/Recommendations"
 import GamesForum from "./pages/forums/GamesForum";
 import GeneralForum from "./pages/forums/GeneralForum";
 import Store from "./store";

@@ -9,9 +9,12 @@ import "./components/landing/Landing.css"
 import {BrowserRouter as Router, Switch, Route,} from "react-router-dom";
 import Login from "./pages/Login"
 import Register from "./pages/Register"
-import Forums from "./pages/Forums"
+import Forums from "./pages/forums/Forums"
 import Profile from "./pages/Profile"
 import Recommendations from "./pages/Recommendations"
+import GamesForum from "./pages/forums/GamesForum";
+import GeneralForum from "./pages/forums/GeneralForum";
+import React from "react";
 
 
 function App() {
@@ -32,11 +35,17 @@ function App() {
                 <Route exact path="/forums">
                     <Forums />
                 </Route>
-      <Route exact path="/teammates">
+                <Route exact path="/teammates">
                     <Recommendations />
                 </Route>
                 <Route exact path="/profile">
                     <Profile />
+                </Route>
+                <Route exact path="/forums/games">
+                    <GamesForum />
+                </Route>
+                <Route exact path="/forums/general">
+                    <GeneralForum />
                 </Route>
                 <Route exact path="/">
                     <div className="App background">
