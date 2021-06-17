@@ -1,0 +1,29 @@
+.forum-layout {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    align-items: start;
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+.forum-title {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: lightskyblue;
+}
+
+.forum-post {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    border-style:solid;
+    border-color: lightblue;
+    color: steelblue;
+}
+
+.link-colour {
+    color: lightskyblue;
+}

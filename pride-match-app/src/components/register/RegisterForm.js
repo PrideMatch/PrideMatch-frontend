@@ -77,7 +77,6 @@ export class RegisterForm extends Component {
         this.setState({instagram: e.target.value})
     }
 
-
     render() {
         return (
             <Container className="register-form">
