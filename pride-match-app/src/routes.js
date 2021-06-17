@@ -6,6 +6,7 @@ import App from "./App"
 import 'react-notifications/lib/notifications.css'
 import {NotificationContainer} from "react-notifications"
 import Register from "./pages/Register";
+import Recommendations from "./pages/Recommendations";
 import Store from "./store";
 import React from "react";
 
@@ -14,24 +15,27 @@ export const Routes = (props) => {
     return (
         <div>
             <Store>
-                <NotificationContainer/>
-                <Switch>
-                    <Route exact path="/">
-                        <App />
-                    </Route>
-                    <Route exact path="/forums">
-                        <Forums />
-                    </Route>
-                    <Route exact path="/profile">
-                        <Profile />
-                    </Route>
-                    <Route exact path="/login">
-                        <Login />
-                    </Route>
-                    <Route exact path="/register">
-                        <Register />
-                    </Route>
-                </Switch>
+            <NotificationContainer/>
+            <Switch>
+                <Route exact path="/">
+                    <App />
+                </Route>
+                <Route exact path="/teammates">
+                    <Recommendations />
+                </Route>
+                <Route exact path="/forums">
+                    <Forums />
+                </Route>
+                <Route exact path="/profile">
+                    <Profile />
+                </Route>
+                <Route exact path="/login">
+                    <Login />
+                </Route>
+                <Route exact path="/register">
+                    <Register />
+                </Route>
+            </Switch>
             </Store>
         </div>
     )

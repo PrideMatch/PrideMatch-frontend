@@ -11,6 +11,8 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Forums from "./pages/Forums"
 import Profile from "./pages/Profile"
+import Recommendations from "./pages/Recommendations"
+
 
 function App() {
     const game1 = "League of Legends"
@@ -29,6 +31,9 @@ function App() {
                 </Route>
                 <Route exact path="/forums">
                     <Forums />
+                </Route>
+      <Route exact path="/teammates">
+                    <Recommendations />
                 </Route>
                 <Route exact path="/profile">
                     <Profile />

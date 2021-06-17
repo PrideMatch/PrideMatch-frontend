@@ -1,3 +1,14 @@
+.register-form {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    max-width: 35% !Important;
+}
+
 .login-label {
     position: fixed;
     top: 10%;
