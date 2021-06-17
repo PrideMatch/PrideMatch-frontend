@@ -1,11 +1,18 @@
 import {Component} from "react";
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 import {Navbar, Nav, NavDropdown} from "react-bootstrap"
 import rainbowLogo from "../assets/PrideMatchRainbow30x30.png"
 import prideMatchWords from "../assets/PrideMatchWords.png"
 import sampleUser from "../assets/SampleUserIcon.png"
 import "./NavigationBar.css"
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
+import Login from "../pages/Login"
 // Global State
 import {Context} from "../store";
 import React, {useContext} from "react";
@@ -72,51 +79,55 @@ export class NavigationBar extends Component {
 
         }
         return (
-            <Navbar bg="light" expand="lg" sticky="top">
-                <Navbar.Brand as={Link} to="/">
-                    <img
-                        src={rainbowLogo}
-                        className="d-inline-block align-top"
-                        alt="Pride Match logo"
-                    />
-                </Navbar.Brand>
-                <Navbar.Brand as={Link} to="/">
-                    <img
-                        src={prideMatchWords}
-                        height="30"
-                        className="d-inline-block align-top"
-                        alt="Pride Match logo"
-                    />
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                        <Nav.Link as={Link} to="/">Home</Nav.Link>
-                        <Nav.Link as={Link} to="/forums">Forums</Nav.Link>
-                    </Nav>
-                    
-                    <Nav>
-                        {
-                        (this.props.user.isLoggedIn) ? 
-                        (<Nav.Link onClick={() => handleUserLog(googleProvider)}>Logout</Nav.Link>)
-                        : 
-                        (<Nav.Link onClick={() => handleUserLog(googleProvider)}>Login</Nav.Link>)
-                        }
-                        {/* <Nav.Link onClick={() => handleUserLog(googleProvider)}>Login</Nav.Link> */}
-                        {/* <Nav.Link as={Link} to="/login">Login</Nav.Link> */}
-                        <Nav.Link as={Link} to="/register">Register</Nav.Link>
-                    </Nav>
-                    
-                    {this.renderUserNav()}
-                    {this.renderUserPic()}
-                </Navbar.Collapse>
-            </Navbar>
+                    <Navbar bg="light" expand="lg" sticky="top">
+                        <Navbar.Brand as={Link} to="/">
+                            <img
+                                src={rainbowLogo}
+                                className="d-inline-block align-top"
+                                alt="Pride Match logo"
+                            />
+                        </Navbar.Brand>
+                        <Navbar.Brand as={Link} to="/">
+                            <img
+                                src={prideMatchWords}
+                                height="30"
+                                className="d-inline-block align-top"
+                                alt="Pride Match logo"
+                            />
+                        </Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="mr-auto">
+                                <Switch>
+                                    <Nav.Link as={Link} to="/">Home</Nav.Link>
+                                    </Switch>
+                                <Nav.Link as={Link} to="/forums">Forums</Nav.Link>
+                            </Nav>
+                            
+                            <Nav>
+                                {
+                                (this.props.user.isLoggedIn) ? 
+                                (<Nav.Link onClick={() => handleUserLog(googleProvider)}>Logout</Nav.Link>)
+                                : 
+                                // (<Nav.Link onClick={() => handleUserLog(googleProvider)}>Login</Nav.Link>)
+                                <Route>
+                                    <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                                </Route>
+                                }
+                                <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                            </Nav>
+                            
+                            {this.renderUserNav()}
+                            {this.renderUserPic()}
+                        </Navbar.Collapse>
+                    </Navbar>
         )
     }
 }
 
 const FunctionalNavigationBar = () => {
-    const [state, setState] = useContext(Context);
+    const {state, setState} = useContext(Context);
+    console.log(state)
 
     return <NavigationBar user={state} setState={setState}/>
 }
