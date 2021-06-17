@@ -4,8 +4,12 @@ import { Image, Button, Container } from "react-bootstrap"
 import LoginForm from "../components/login/LoginForm";
 import logo from "../assets/PrideMatchLogoCropped.png"
 import login from "../assets/Login.png"
-import {googleProvider} from "../firebase_config/authMethod";
+import {googleProvider, signOutUser} from "../firebase_config/authMethod";
 import socialMediaAuth from "../service/auth"
+
+// Global State
+import { Context } from "../store";
+import React, {useContext, useState} from "react";
 
 export class Login extends Component {
     constructor(props) {
@@ -14,9 +18,24 @@ export class Login extends Component {
     }
 
     render() {
-        const handleOnClick = async (provider) => {
-            const res = await socialMediaAuth(provider);
-            console.log(res);
+        const handleUserLog = async (provider) => {
+            if (!(this.props.user.isLoggedIn)) {
+                const res = await socialMediaAuth(provider);
+                this.props.setState({...this.props.user,
+                    isLoggedIn: true,
+                    name: res.displayName,
+                    profilePicture: res.photoURL,
+                    sessionToken: res.refreshToken
+                })
+                console.log(res)
+            } else if (this.props.user.isLoggedIn) {
+                await signOutUser
+                this.props.setState({...this.props.user,
+                    isLoggedIn: false,
+                    name: "",
+                    profilePicture: ""
+                })
+            }
         }
         return (
             <div className="App background">
@@ -28,7 +47,7 @@ export class Login extends Component {
                 <Container>
                     <Button
                         className="colourful-button"
-                        onClick={() => handleOnClick(googleProvider)}>Login with Google!</Button>
+                        onClick={() => handleUserLog(googleProvider)}>Login with Google!</Button>
                 </Container>
                 <br/>
                 <br/>
@@ -38,4 +57,13 @@ export class Login extends Component {
     }
 }
 
-export default (Login);
+const FunctionalLogin = () => {
+    const {state, setState} = useContext(Context);
+    console.log("context: ", Context);
+    console.log("useContext(context): ", useContext(Context));
+    return (
+        <Login user={state} setState={setState}/>
+    )
+}
+
+export default (FunctionalLogin);

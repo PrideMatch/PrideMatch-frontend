@@ -6,6 +6,10 @@ import register from "../assets/Register.png"
 import RegisterForm from "../components/register/RegisterForm"
 import "../components/register/Register.css"
 
+// Global State
+import { Context } from "../store";
+import React, {useContext, useState} from "react";
+
 export class Register extends Component {
     constructor(props) {
         super(props);
@@ -34,4 +38,12 @@ export class Register extends Component {
     }
 }
 
-export default (Register);
+const FunctionalRegister = () => {
+    console.log("context: ", Context);
+    console.log("useContext(context): ", useContext(Context));
+    return (
+        <Register/>
+    )
+}
+
+export default (FunctionalRegister);
