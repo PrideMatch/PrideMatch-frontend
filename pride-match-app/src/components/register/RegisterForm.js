@@ -80,8 +80,8 @@ export class RegisterForm extends Component {
 
     render() {
         return (
-            <Container className="login-form">
-                <Form id="login-form">
+            <Container className="register-form">
+                <Form id="register-form">
                     <Row>
                         <Col>
                             <Form.Text muted>* required</Form.Text>
