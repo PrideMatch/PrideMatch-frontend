@@ -6,11 +6,8 @@ import App from "./App"
 import 'react-notifications/lib/notifications.css'
 import {NotificationContainer} from "react-notifications"
 import Register from "./pages/Register";
-
-// Global State
 import Store from "./store";
-import { Context } from "./store";
-import React, {useContext, useState} from "react";
+import React from "react";
 
 export const Routes = (props) => {
 

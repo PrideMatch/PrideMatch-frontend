@@ -8,41 +8,37 @@ import {googleProvider, signOutUser} from "../firebase_config/authMethod";
 import socialMediaAuth from "../service/auth"
 
 // Global State
-import Store from "../store";
 import { Context } from "../store";
 import React, {useContext, useState} from "react";
 
-
 export class Login extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = { loginUsername: "", loginPassword: ""}
-    // }
+    constructor(props) {
+        super(props);
+        this.state = { loginUsername: "", loginPassword: ""}
+    }
 
     render() {
-
         const handleUserLog = async (provider) => {
             if (!(this.props.user.isLoggedIn)) {
                 const res = await socialMediaAuth(provider);
-                this.props.setState({...this.props.user, 
-                                        isLoggedIn: true, 
-                                        name: res.displayName,
-                                        profilePicture: res.photoURL,
-                                        sessionToken: res.refreshToken
-                                    })
+                this.props.setState({...this.props.user,
+                    isLoggedIn: true,
+                    name: res.displayName,
+                    profilePicture: res.photoURL,
+                    sessionToken: res.refreshToken
+                })
                 console.log(res)
             } else if (this.props.user.isLoggedIn) {
                 await signOutUser
-                this.props.setState({...this.props.user, 
-                                        isLoggedIn: false, 
-                                        name: "",
-                                        profilePicture: ""                            
-                                    })
+                this.props.setState({...this.props.user,
+                    isLoggedIn: false,
+                    name: "",
+                    profilePicture: ""
+                })
             }
-
         }
         return (
-                <div className="App background">
+            <div className="App background">
                 <NavigationBar/>
                 <Image src={logo} alt="Pride Match Logo"/>
                 <br/>
@@ -56,8 +52,7 @@ export class Login extends Component {
                 <br/>
                 <br/>
                 <LoginForm />
-                </div>
-            
+            </div>
         )
     }
 }
@@ -66,10 +61,9 @@ const FunctionalLogin = () => {
     const {state, setState} = useContext(Context);
     console.log("context: ", Context);
     console.log("useContext(context): ", useContext(Context));
-
     return (
         <Login user={state} setState={setState}/>
-    )   
+    )
 }
 
 export default (FunctionalLogin);
