@@ -6,7 +6,9 @@ import { renderForumPost, renderForumLink} from "../../helpers";
 export class Forum extends Component {
     constructor(props) {
         super(props)
-        this.state = { displayPosts: [], someGamePosts: [ "game1", "game2", "game3"],
+        this.state = { allGamePosts:[ "game1", "game2", "game3", "game4"],
+            someGamePosts: [ "game1", "game2", "game3"],
+            allGeneralPosts: ["general1", "general2", "general3", "general4"],
             someGeneralPosts: ["general1", "general2", "general3"]}
     }
 

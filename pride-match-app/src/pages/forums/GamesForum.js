@@ -1,9 +1,9 @@
 import {Component} from "react";
-import NavigationBar from "../components/NavigationBar";
-import forums from "../assets/forums.png";
-import games from "../assets/games.png";
+import NavigationBar from "../../components/NavigationBar";
+import forums from "../../assets/forums.png";
+import games from "../../assets/games.png";
 import {Image} from "react-bootstrap";
-import Forum from "../components/forums/Forum"
+import Forum from "../../components/forums/Forum"
 
 export class GamesForum extends Component {
     render() {
