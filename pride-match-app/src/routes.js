@@ -14,6 +14,7 @@ export const Routes = (props) => {
 
     return (
         <div>
+            <Store>
             <NotificationContainer/>
             <Switch>
                 <Route exact path="/">
@@ -35,6 +36,7 @@ export const Routes = (props) => {
                     <Register />
                 </Route>
             </Switch>
+            </Store>
         </div>
     )
 }
