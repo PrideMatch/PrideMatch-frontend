@@ -1,12 +1,14 @@
 import {Component} from "react";
 import NavigationBar from "../components/NavigationBar";
+import myProfile from "../assets/myProfile.png";
+import {Image} from "react-bootstrap";
 
 export class Profile extends Component {
     render() {
         return (
             <div className="App background">
                 <NavigationBar/>
-                <h1>Profile</h1>
+                <Image src={myProfile} alt="My Profile"/>
             </div>
         )
     }

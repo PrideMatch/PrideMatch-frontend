@@ -6,6 +6,7 @@ import App from "./App"
 import 'react-notifications/lib/notifications.css'
 import {NotificationContainer} from "react-notifications"
 import Register from "./pages/Register";
+import Recommendations from "./pages/Recommendations";
 
 export const Routes = (props) => {
 
@@ -15,6 +16,9 @@ export const Routes = (props) => {
             <Switch>
                 <Route exact path="/">
                     <App />
+                </Route>
+                <Route exact path="/teammates">
+                    <Recommendations />
                 </Route>
                 <Route exact path="/forums">
                     <Forums />
