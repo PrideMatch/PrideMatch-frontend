@@ -7,6 +7,8 @@ import 'react-notifications/lib/notifications.css'
 import {NotificationContainer} from "react-notifications"
 import Register from "./pages/Register";
 import Recommendations from "./pages/Recommendations";
+import Store from "./store";
+import React from "react";
 
 export const Routes = (props) => {
 
