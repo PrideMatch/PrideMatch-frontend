@@ -11,6 +11,13 @@ import { Context, LoadStateFromLocal } from "./store";
 
 function App() {
     const {state, setState} = useContext(Context);
+
+    const game1 = "League of Legends"
+    const game2 = "Valorant"
+    // const Lol1 = LoL1
+    // const Lol2 = valorant
+
+
     if (state) {
         LoadStateFromLocal(setState)
     }else {

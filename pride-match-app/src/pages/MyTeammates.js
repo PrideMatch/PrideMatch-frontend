@@ -57,12 +57,11 @@ export class MyTeammates extends Component {
 
 const FunctionalMyTeammates = () => {
     const {state, setState} = useContext(Context);
+
     if (state) {
         LoadStateFromLocal(setState)
-        console.log("loaded!")
-    } else {
-        console.log("no state present")
-    }
+    } 
+
     return (
         <MyTeammates state={state} setState={setState}/>
     )

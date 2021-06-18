@@ -23,8 +23,6 @@ const FunctionalProfile = () => {
 
     if (state) {
         LoadStateFromLocal(setState)
-    }else {
-        console.log("no state present")
     }
 
     return (

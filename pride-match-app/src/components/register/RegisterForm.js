@@ -3,6 +3,7 @@ import { Form, Button, Col, Container, Row } from "react-bootstrap"
 import { NotificationManager } from "react-notifications"; // commented out for now
 import { NOTIFICATION_TIMER, ORIENTATION_LIST, GENDER_LIST, PRONOUNS_LIST } from "../../constants" // commented out for now
 import "../login/Login.css"
+import { sendRegistrationPost } from "../../helpers"
 
 // Google Login
 import {googleProvider, signOutUser} from "../../firebase_config/authMethod";
@@ -43,16 +44,12 @@ export class RegisterForm extends Component {
     }
 
     handleSubmit = () => {
-        console.log(this.props.state)
         let requiredStates = [this.state.username, this.state.password, this.state.confirmPassword, this.state.email,
             this.state.confirmEmail,this.state.regOrientation, this.state.age, this.state.pronouns, this.state.gender]
         if (requiredStates.includes("") || this.state.games.length === 0) {
             NotificationManager.warning("Please fill out all required (*) information!")
-            console.log(this.state)
         } else if (this.state.email.toLowerCase() !== this.state.confirmEmail.toLowerCase()) {
             NotificationManager.warning("Emails do not match!", "", NOTIFICATION_TIMER)
-            console.log(this.state.email)
-            console.log(this.state.confirmEmail)
         } else if (this.state.password.toLowerCase() !== this.state.confirmPassword.toLowerCase()) {
             NotificationManager.warning("Passwords do not match!", "", NOTIFICATION_TIMER)
         } else {
@@ -64,10 +61,13 @@ export class RegisterForm extends Component {
                 email: this.state.email
             })
             this.props.setUserState({...this.props.userState, completed: true})
-            console.log("Registration Details: ", this.state)
             NotificationManager.success("Welcome to Pride Match, " + this.state.username + "!", "", NOTIFICATION_TIMER)
         }
         SaveStateToLocal(this.props.state)
+        sendRegistrationPost(this.props.state)
+        console.log(sendRegistrationPost(this.props.state))
+
+
     }
 
     handleGoogleAutofill = async (provider) => {
@@ -85,7 +85,7 @@ export class RegisterForm extends Component {
 
             this.props.setUserState({...this.props.userState,
                 googleFill: true})
-            console.log(res)
+
         } else if (this.props.state.isLoggedIn) {
             await signOutUser
             this.props.setState({...this.props.state,
@@ -419,9 +419,6 @@ const FunctionalRegisterForm = () => {
 
     if (state) {
         LoadStateFromLocal(setState)
-        console.log("loaded!")
-    } else {
-        console.log("no state present")
     }
 
     return (
