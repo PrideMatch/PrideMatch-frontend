@@ -16,7 +16,7 @@ export class GeneralForum extends Component {
                 <NavigationBar/>
                 <Image src={forums} alt="Forums"/>
                 <br/>
-                <Img src={general} alt="General"/>
+                <Image src={general} alt="General"/>
                 <Forum type="allGeneral"/>
             </div>
         )
