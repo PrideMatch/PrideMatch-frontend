@@ -5,6 +5,10 @@ import {Button, Image, Row} from "react-bootstrap";
 import DisplayTeammates from "../components/landing/DisplayTeammates";
 import { renderForumLink } from "../helpers"
 
+// Global State
+import { Context, LoadStateFromLocal } from "../store";
+import React, { useContext } from "react";
+
 export class MyTeammates extends Component {
     render() {
         return (
@@ -21,4 +25,18 @@ export class MyTeammates extends Component {
     }
 }
 
-export default (MyTeammates)
+const FunctionalMyTeammates = () => {
+    const {state, setState} = useContext(Context);
+    if (state) {
+        LoadStateFromLocal(setState)
+        console.log("loaded!")
+    } else {
+        console.log("no state present")
+    }
+    return (
+        <MyTeammates state={state} setState={setState}/>
+    )
+}
+
+
+export default (FunctionalMyTeammates)
