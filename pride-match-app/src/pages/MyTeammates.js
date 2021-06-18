@@ -7,7 +7,7 @@ import DisplayTeammates from "../components/landing/DisplayTeammates";
 import { renderForumLink } from "../helpers"
 import "../components/landing/Landing.css"
 import 'react-bootstrap-typeahead/css/Typeahead.css';
-import ConfirmAddFriend from "../components/landing/ConfirmAddFriend";
+import ConfirmAddFriend from "../components/landing/ConfirmAddTeammate";
 
 // Global State
 import { Context, LoadStateFromLocal } from "../store";
