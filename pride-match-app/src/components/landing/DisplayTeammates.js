@@ -32,7 +32,7 @@ export class DisplayTeammates extends Component {
                 {/*TODO map through all teammates*/}
                 {/*TODO test different # of interests for card size*/}
                 {this.state.arrayToDisplay.length === 0
-                    ? <span className="no-display">No Recommendations to Display</span>
+                    ? <span className="no-display">No Teammates to Display</span>
                     : this.state.arrayToDisplay.map((item, index) => {
                     return <IndividualTeammate type={this.props.type} key={index}/>
                     })
