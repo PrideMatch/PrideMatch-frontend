@@ -38,7 +38,7 @@ export function renderForumPost(array, type) {
         if (array.length === 0) {
             return ""
         } else {
-            return <ForumPost type={type} post={post} index={index}/>
+            return <ForumPost type={type} post={post} key={index}/>
         }
     })
 }
