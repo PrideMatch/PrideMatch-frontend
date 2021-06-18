@@ -3,6 +3,7 @@ import { Form, Button, Col, Container, Row } from "react-bootstrap"
 import { NotificationManager } from "react-notifications"; // commented out for now
 import { NOTIFICATION_TIMER, ORIENTATION_LIST, GENDER_LIST, PRONOUNS_LIST } from "../../constants" // commented out for now
 import "../login/Login.css"
+import axios from 'axios';
 
 // Google Login
 import {googleProvider, signOutUser} from "../../firebase_config/authMethod";
@@ -68,6 +69,8 @@ export class RegisterForm extends Component {
             NotificationManager.success("Welcome to Pride Match, " + this.state.username + "!", "", NOTIFICATION_TIMER)
         }
         SaveStateToLocal(this.props.state)
+
+        
     }
 
     handleGoogleAutofill = async (provider) => {
