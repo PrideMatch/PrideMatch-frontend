@@ -25,7 +25,7 @@ export class NavigationBar extends Component {
                     ?
                     <div id="user-nav">
                         <NavDropdown
-                            className="" id="basic-nav-dropdown"  title={this.props.user.name}>
+                            id="basic-nav-dropdown"  title={this.props.user.name}>
                             <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
                             <Nav.Link as={Link} to="/friends">Friends</Nav.Link>
                             <Nav.Link as={Link} to="/games">My Games</Nav.Link>
@@ -41,14 +41,17 @@ export class NavigationBar extends Component {
 
     renderUserPic() {
         return (
-            <Nav.Item>
-                <Nav.Link as={Link} to="/profile">
-                    {(this.props.user.isLoggedIn && this.props.userState.completed)
-                        ? <img src={this.props.user.profilePicture} width="30" height="30" alt="Pride Match logo"/>
-                        : ""
-                    }
-                </Nav.Link>
-            </Nav.Item>
+            <div>
+                {(this.props.user.isLoggedIn && this.props.userState.completed)
+                    ?
+                    <Nav.Item>
+                        <Nav.Link as={Link} to="/profile">
+                            <img src={this.props.user.profilePicture} width="30" height="30" alt="Profile Pic"/>
+                        </Nav.Link>
+                    </Nav.Item>
+                    : ""
+                }
+            </div>
         )
     }
 
@@ -108,14 +111,13 @@ export class NavigationBar extends Component {
                         <Nav.Link as={Link} to="/forums">Forums</Nav.Link>
                     </Nav>
                     <Nav>
-                        {
-                            (this.props.user.isLoggedIn && this.props.userState.firstTime)
-                                ? ""
-                                :
-                                <Nav>
-                                        <Nav.Link as={Link} to="/login">Login</Nav.Link>
-                                        <Nav.Link as={Link} to="/register">Register</Nav.Link>
-                                </Nav>
+                        {(this.props.user.isLoggedIn && this.props.userState.firstTime)
+                            ? ""
+                            :
+                            <Nav>
+                                <Nav.Link as={Link} to="/login">Login</Nav.Link>
+                                <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                            </Nav>
                         }
                     </Nav>
                     {this.renderUserNav()}
