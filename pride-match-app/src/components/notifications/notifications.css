@@ -6,7 +6,8 @@
     padding-top: 20px;
     padding-bottom: 10px;
     overflow-y: scroll;
-    height: 60vh;
+    margin-top: 20px;
+    height: 70vh;
 }
 
 .notification-post {
