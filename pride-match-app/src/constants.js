@@ -6,3 +6,6 @@ export const ORIENTATION_LIST = ["Asexual", "Bisexual", "Heterosexual", "Homosex
 export const GENDER_LIST = ["Cisgender", "Genderqueer",
     "Gender Fluid", "Gender Neutral", "Non-Binary", "Transgender", "Two-Spirit","Other",
     "Prefer Not to Answer"]
+
+export const PRONOUNS_LIST = ["e/ey", "he", "per", "she", "sie", "they", "ve", "zie", "Other",
+    "Prefer Not to Answer"]
