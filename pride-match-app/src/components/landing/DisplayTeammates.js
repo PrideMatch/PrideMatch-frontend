@@ -13,7 +13,8 @@ export class DisplayTeammates extends Component {
             // TODO setState for arraytoDisplay
 
             case 'games':
-                // TODO use {this.props.gameName} to get LIST of teammates who play this game
+                const gameName = this.props.gameName
+                // TODO use gameName to get LIST of teammates who play this game
                 break;
             case 'recommend':
                 // TODO get LIST of recommended teammates with similar games and interests
@@ -33,7 +34,7 @@ export class DisplayTeammates extends Component {
                     if (this.state.arrayToDisplay.length === 0) {
                         return "No Teammates to Display"
                     } else {
-                        return <IndividualTeammate index={index} />
+                        return <IndividualTeammate type={this.props.type} index={index} />
                     }
                 })}
             </Row>

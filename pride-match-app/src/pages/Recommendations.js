@@ -6,6 +6,7 @@ import teammate from "../assets/teammate.png";
 import recommendations from "../assets/recommendations.png";
 import "../components/recommendations/recommendations.css"
 import TeammatesTabs from "../components/recommendations/TeammatesTabs";
+import DisplayTeammates from "../components/landing/DisplayTeammates";
 export class Recommendations extends Component {
     render() {
         return (
@@ -14,11 +15,10 @@ export class Recommendations extends Component {
                 <Image src={teammate} alt="Teammate"/>
                 <Image className="level-off" src={recommendations} alt="Recommendations"/>
                 <TeammatesTabs />
-                <Row className="game-container" xs={1} md={2} lg={4}>
+                <Row className="game-container">
                     {/*TODO make recommendations dynamic*/}
                     {/*note: recommended teammates will come from recommended API call*/}
-                    <IndividualTeammate type="recommend" index={"1"}/>
-                    <IndividualTeammate type="recommend" index={"2"}/>
+                    <DisplayTeammates type="recommend"/>
                 </Row>
             </div>
         )
