@@ -51,5 +51,14 @@
     align-self: center;
 }
 
+.teammate-typeahead {
+    justify-content: center;
+    display: flex;
+}
+
+.search-typeahead {
+    margin: 5px;
+}
+
 
 
