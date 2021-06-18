@@ -27,7 +27,8 @@ export class FindTeammatesModal extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         {/*TODO get all users interested in this.props.gameName*/}
-                        <DisplayTeammates />
+                        {/*note: teammates displayed will have this game in their games list*/}
+                        <DisplayTeammates type="games" gameName={this.props.gameName}/>
                     </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={this.handleClose}>Close</Button>
