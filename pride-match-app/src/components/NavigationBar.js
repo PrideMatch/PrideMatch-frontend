@@ -2,10 +2,9 @@ import {Component} from "react";
 import {Navbar, Nav, NavDropdown} from "react-bootstrap"
 import rainbowLogo from "../assets/PrideMatchRainbow30x30.png"
 import prideMatchWords from "../assets/PrideMatchWords.png"
+import sampleUserIcon from "../assets/SampleUserIcon.png"
 import "./NavigationBar.css"
 import {
-    BrowserRouter as Router,
-    Route,
     Link
 } from "react-router-dom";
 
@@ -46,7 +45,10 @@ export class NavigationBar extends Component {
                     ?
                     <Nav.Item>
                         <Nav.Link as={Link} to="/profile">
-                            <img src={this.props.user.profilePicture} width="30" height="30" alt="Profile Pic"/>
+                            {this.props.user.profilePicture === ""
+                            ? <img src={sampleUserIcon} width="30" height="30" alt="Profile Pic"/>
+                            : <img src={this.props.user.profilePicture} width="30" height="30" alt="Profile Pic"/>
+                            }
                         </Nav.Link>
                     </Nav.Item>
                     : ""
