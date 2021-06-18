@@ -43,7 +43,7 @@ export class RegisterForm extends Component {
     }
 
     handleSubmit = () => {
-        // TODO go to landing page
+        console.log(this.props.state)
         let requiredStates = [this.state.username, this.state.password, this.state.confirmPassword, this.state.email,
             this.state.confirmEmail,this.state.regOrientation, this.state.age, this.state.pronouns, this.state.gender]
         if (requiredStates.includes("") || this.state.games.length === 0) {
@@ -56,11 +56,17 @@ export class RegisterForm extends Component {
         } else if (this.state.password.toLowerCase() !== this.state.confirmPassword.toLowerCase()) {
             NotificationManager.warning("Passwords do not match!", "", NOTIFICATION_TIMER)
         } else {
-            NotificationManager.success("Welcome to Pride Match, " + this.state.username + "!", "", NOTIFICATION_TIMER)
+            // TODO change this.props.state's profilePicture and sessionToken
+            this.props.setState({
+                ...this.props.state,
+                isLoggedIn: true,
+                name: this.state.username,
+                email: this.state.email
+            })
             this.props.setUserState({...this.props.userState, completed: true})
             console.log("Registration Details: ", this.state)
+            NotificationManager.success("Welcome to Pride Match, " + this.state.username + "!", "", NOTIFICATION_TIMER)
         }
-        // NotificationManager.warning("Incorrect username or password", "", NOTIFICATION_TIMER)
     }
 
     handleGoogleAutofill = async (provider) => {
