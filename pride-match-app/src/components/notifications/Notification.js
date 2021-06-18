@@ -1,6 +1,6 @@
 import {Component} from "react";
 import "./notifications.css"
-import "../landing/Landing.css"
+import "../../App.css"
 import NotificationPost from "./NotificationPost";
 
 export class Notification extends Component {
