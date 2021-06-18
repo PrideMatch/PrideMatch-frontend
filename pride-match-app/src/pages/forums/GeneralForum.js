@@ -1,8 +1,8 @@
 import {Component} from "react";
 import NavigationBar from "../../components/NavigationBar";
 import forums from "../../assets/forums.png";
-import general from "../../assets/general.png";
-import {Image} from "react-bootstrap";
+import general from "../../assets/general.png"
+import {Image, Nav} from "react-bootstrap";
 import Forum from "../../components/forums/Forum"
 
 // Global State
@@ -16,7 +16,7 @@ export class GeneralForum extends Component {
                 <NavigationBar/>
                 <Image src={forums} alt="Forums"/>
                 <br/>
-                <Image src={general} alt="Games"/>
+                <Img src={general} alt="General"/>
                 <Forum type="allGeneral"/>
             </div>
         )
@@ -31,7 +31,6 @@ const FunctionalGeneralForum = () => {
     } else {
         console.log("no state present")
     }
-
     return (
         <GeneralForum state={state} setState={setState} />
     )
