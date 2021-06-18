@@ -1,21 +1,74 @@
 import {Component} from "react";
 import { Form, Button, Col, Container, Row } from "react-bootstrap"
-import { NotificationManager } from "react-notifications";
-import { NOTIFICATION_TIMER, ORIENTATION_LIST, GENDER_LIST } from "../../constants"
+import { NotificationManager } from "react-notifications"; // commented out for now
+import { NOTIFICATION_TIMER, ORIENTATION_LIST, GENDER_LIST } from "../../constants" // commented out for now
 import "../login/Login.css"
+
+// Google Login
+import {googleProvider, signOutUser} from "../../firebase_config/authMethod";
+import socialMediaAuth from "../../service/auth"
+
+// Global State
+import { Context, LoginContext } from "../../store";
+import React, { useContext } from "react";
 
 export class RegisterForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { orientationList: ORIENTATION_LIST, genderList: GENDER_LIST, username: "", password: "",
-            confirmPassword: "", email: "", confirmEmail: "", regOrientation: "", gender: "", displayOrientation: false,
-            displayGender: false, games: [], interests: [], discord: "", twitter: "", instagram: ""}
+        this.state = { 
+            username: "", 
+            password: "",
+            confirmPassword: "", 
+            email: "", 
+            confirmEmail: "", 
+            regOrientation: "", 
+            gender: "", 
+            displayOrientation: false,
+            displayGender: false, 
+            games: [], 
+            interests: [], 
+            discord: "", 
+            twitter: "", 
+            instagram: ""
+        }
+        this.listStates = {
+            orientationList: ORIENTATION_LIST, 
+            genderList: GENDER_LIST
+        }
     }
 
     handleSubmit = () => {
         // TODO go to landing page
-        NotificationManager.success("Welcome back!", "", NOTIFICATION_TIMER)
-        NotificationManager.warning("Incorrect username or password", "", NOTIFICATION_TIMER)
+        // NotificationManager.success("Welcome back!", "", NOTIFICATION_TIMER)
+        // NotificationManager.warning("Incorrect username or password", "", NOTIFICATION_TIMER)
+        this.props.setUserState({...this.props.userState, completed: true})
+        console.log("Registration Details: ", this.state)
+    }
+
+    handleGoogleAutofill = async (provider) => {
+        if (!(this.props.state.isLoggedIn)) {
+            const res = await socialMediaAuth(provider);
+            this.props.setState({...this.props.state,
+                isLoggedIn: true,
+                name: res.displayName,
+                email: res.email,
+                profilePicture: res.photoURL,
+                sessionToken: res.refreshToken
+            })
+            this.setState({username: res.displayName, email: res.email, confirmEmail: res.email})
+
+            this.props.setUserState({...this.props.userState,
+                googleFill: true})
+            console.log(res)
+        } else if (this.props.state.isLoggedIn) {
+            await signOutUser
+            this.props.setState({...this.props.state,
+                isLoggedIn: false,
+                name: "",
+                profilePicture: "",
+                email: ""
+            })
+        }
     }
 
     setUsername = (e) => {
@@ -89,7 +142,8 @@ export class RegisterForm extends Component {
                                 <Form.Control
                                     type="text"
                                     onChange={this.setUsername}
-                                    placeholder="Enter username"/>
+                                    placeholder="Enter username"
+                                    value={this.state.username}/>
                             </Form.Group>
                         </Col>
                     </Row>
@@ -100,7 +154,8 @@ export class RegisterForm extends Component {
                                 <Form.Control
                                     type="text"
                                     onChange={this.setEmail}
-                                    placeholder="Enter email"/>
+                                    placeholder="Enter email"
+                                    value={this.state.email}/>
                             </Form.Group>
                         </Col>
                         <Col>
@@ -120,7 +175,8 @@ export class RegisterForm extends Component {
                                 <Form.Control
                                     type="text"
                                     onChange={this.setConfirmEmail}
-                                    placeholder="Confirm email"/>
+                                    placeholder="Confirm email"
+                                    value={this.state.confirmEmail}/>
                             </Form.Group>
                         </Col>
                         <Col>
@@ -142,7 +198,7 @@ export class RegisterForm extends Component {
                                     as="select"
                                     single>
                                     <option defaultValue="N/A" disabled>Choose...</option>
-                                    {this.state.genderList.map((gender, index) => {
+                                    {this.listStates.genderList.map((gender, index) => {
                                         return <option key={index} value={gender}>{gender}</option>
                                     })}
                                 </Form.Control>
@@ -162,7 +218,7 @@ export class RegisterForm extends Component {
                                     as="select"
                                     single>
                                     <option defaultValue="N/A" disabled>Choose...</option>
-                                    {this.state.orientationList.map((orient, index) => {
+                                    {this.listStates.orientationList.map((orient, index) => {
                                         return <option key={index} value={orient}>{orient}</option>
                                     })}
                                 </Form.Control>
@@ -241,10 +297,23 @@ export class RegisterForm extends Component {
 
                     <br/>
                     <Button className="colourful-button" onClick={this.handleSubmit}>Register</Button>
+                    {this.props.userState.googleFill ? 
+                        "" : 
+                        <Button className="colourful-button" onClick={() => this.handleGoogleAutofill(googleProvider)}>Register with Google</Button>
+}
                 </Form>
             </Container>
         )
     }
 }
 
-export default (RegisterForm);
+const FunctionalRegisterForm = () => {
+    const {state, setState} = useContext(Context)
+    const {userState, setUserState} = useContext(LoginContext)
+
+    return (
+        <RegisterForm userState={userState} setUserState={setUserState} state={state} setState={setState}/>
+    )
+}
+
+export default (FunctionalRegisterForm);

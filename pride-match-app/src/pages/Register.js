@@ -5,10 +5,11 @@ import logo from "../assets/PrideMatchLogoCropped.png"
 import register from "../assets/Register.png"
 import RegisterForm from "../components/register/RegisterForm"
 import "../components/register/Register.css"
+import  { Redirect } from 'react-router-dom'
 
 // Global State
-import { Context } from "../store";
-import React, {useContext, useState} from "react";
+import { LoginContext } from "../store";
+import React, { useContext } from "react";
 
 export class Register extends Component {
     constructor(props) {
@@ -33,16 +34,17 @@ export class Register extends Component {
                         </Nav.Item>
                     </Nav>
                 </div>
+                {this.props.userState.completed ? <Redirect to="/" /> : ""}
             </div>
         )
     }
 }
 
 const FunctionalRegister = () => {
-    console.log("context: ", Context);
-    console.log("useContext(context): ", useContext(Context));
+    const {userState, setUserState} = useContext(LoginContext);
+
     return (
-        <Register/>
+        <Register userState={userState}/>
     )
 }
 
