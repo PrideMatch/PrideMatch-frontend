@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 
 // Global State
-import {Context, LoginContext} from "../store";
+import {Context, LoginContext, SaveStateToLocal} from "../store";
 import React, {useContext} from "react";
 
 // Google Signin
@@ -20,7 +20,7 @@ export class NavigationBar extends Component {
     renderUserNav() {
         return (
             <div>
-                {(this.props.user.isLoggedIn && this.props.userState.completed)
+                {(this.props.user.isLoggedIn && this.props.user.isRegistered)
                     ?
                     <div id="user-nav">
                         <NavDropdown
@@ -85,6 +85,7 @@ export class NavigationBar extends Component {
                 completed: false
             })
         }
+        SaveStateToLocal(this.props.user)
     }
 
     render() {
@@ -133,7 +134,8 @@ export class NavigationBar extends Component {
 const FunctionalNavigationBar = () => {
     const {state, setState} = useContext(Context);
     const {userState, setUserState} = useContext(LoginContext);
-    console.log(state)
+    // console.log(state)
+
     return <NavigationBar user={state} setState={setState} userState={userState} setUserState={setUserState}/>
 }
 

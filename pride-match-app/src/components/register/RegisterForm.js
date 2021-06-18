@@ -9,7 +9,7 @@ import {googleProvider, signOutUser} from "../../firebase_config/authMethod";
 import socialMediaAuth from "../../service/auth"
 
 // Global State
-import { Context, LoginContext } from "../../store";
+import { Context, LoginContext, LoadStateFromLocal, SaveStateToLocal } from "../../store";
 import React, { useContext } from "react";
 
 export class RegisterForm extends Component {
@@ -67,6 +67,7 @@ export class RegisterForm extends Component {
             console.log("Registration Details: ", this.state)
             NotificationManager.success("Welcome to Pride Match, " + this.state.username + "!", "", NOTIFICATION_TIMER)
         }
+        SaveStateToLocal(this.props.state)
     }
 
     handleGoogleAutofill = async (provider) => {
@@ -74,6 +75,7 @@ export class RegisterForm extends Component {
             const res = await socialMediaAuth(provider);
             this.props.setState({...this.props.state,
                 isLoggedIn: true,
+                isRegistered: true,
                 name: res.displayName,
                 email: res.email,
                 profilePicture: res.photoURL,
@@ -414,6 +416,13 @@ export class RegisterForm extends Component {
 const FunctionalRegisterForm = () => {
     const {state, setState} = useContext(Context)
     const {userState, setUserState} = useContext(LoginContext)
+
+    if (state) {
+        LoadStateFromLocal(setState)
+        console.log("loaded!")
+    } else {
+        console.log("no state present")
+    }
 
     return (
         <RegisterForm userState={userState} setUserState={setUserState} state={state} setState={setState}/>

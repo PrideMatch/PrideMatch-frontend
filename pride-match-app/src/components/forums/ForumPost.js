@@ -2,6 +2,10 @@ import { Component } from "react";
 import { Container, Card, Nav } from "react-bootstrap";
 import "./Forum.css"
 
+// Global State
+import { Context, LoadStateFromLocal } from "../../store";
+import React, { useContext } from "react";
+
 export class ForumPost extends Component {
     constructor(props) {
         super(props)
@@ -25,4 +29,19 @@ export class ForumPost extends Component {
         )
     }
 }
-export default (ForumPost)
+
+const FunctionalForumPost = () => {
+    const {state, setState} = useContext(Context)
+
+    if (state) {
+        LoadStateFromLocal(setState)
+    }else {
+        console.log("no state present")
+    }
+
+    return (
+        <ForumPost state={state} setState={setState}/>
+    )
+}
+
+export default (FunctionalForumPost)
