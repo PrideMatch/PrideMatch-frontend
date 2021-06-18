@@ -38,15 +38,15 @@ export function renderForumPost(array, type) {
         if (array.length === 0) {
             return ""
         } else {
-            return <ForumPost type={type} post={post} index={index}/>
+            return <ForumPost type={type} post={post} key={index}/>
         }
     })
 }
 
-export function renderForumLink(path) {
+export function renderForumLink(path, title, className) {
     return <Nav className="justify-content-center">
         <Nav.Item>
-            <Nav.Link className="link-colour" href={path}>See All Posts</Nav.Link>
+            <Nav.Link className={className} href={path}>{title}</Nav.Link>
         </Nav.Item>
     </Nav>
 }

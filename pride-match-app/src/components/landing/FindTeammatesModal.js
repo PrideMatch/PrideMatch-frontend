@@ -21,7 +21,13 @@ export class FindTeammatesModal extends Component {
         return (
             <div>
                 <Button onClick={this.handleFind}>Find Teammates!</Button>
-                <Modal size={"lg"} show={this.state.showModal} onHide={this.handleClose} scrollable>
+                <Modal
+                    size={"lg"}
+                    show={this.state.showModal}
+                    onHide={this.handleClose}
+                    backdrop="static"
+                    keyboard={false}
+                    scrollable>
                     <Modal.Header>
                         Find Teammates for {this.props.gameName}
                     </Modal.Header>
@@ -30,9 +36,9 @@ export class FindTeammatesModal extends Component {
                         {/*note: teammates displayed will have this game in their games list*/}
                         <DisplayTeammates type="games" gameName={this.props.gameName}/>
                     </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={this.handleClose}>Close</Button>
-                </Modal.Footer>
+                    <Modal.Footer>
+                        <Button onClick={this.handleClose}>Close</Button>
+                    </Modal.Footer>
                 </Modal>
             </div>
         )

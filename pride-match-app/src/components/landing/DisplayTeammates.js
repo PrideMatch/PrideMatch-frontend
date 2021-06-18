@@ -19,7 +19,7 @@ export class DisplayTeammates extends Component {
             case 'recommend':
                 // TODO get LIST of recommended teammates with similar games and interests
                 break;
-            case 'friends':
+            case 'teammates':
                 // TODO get LIST of friends
                 break;
         }
@@ -34,7 +34,7 @@ export class DisplayTeammates extends Component {
                     if (this.state.arrayToDisplay.length === 0) {
                         return "No Teammates to Display"
                     } else {
-                        return <IndividualTeammate type={this.props.type} index={index} />
+                        return <IndividualTeammate type={this.props.type} key={index}/>
                     }
                 })}
             </Row>

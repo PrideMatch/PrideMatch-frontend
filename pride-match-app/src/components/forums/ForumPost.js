@@ -14,7 +14,7 @@ export class ForumPost extends Component {
                     ? <h5>Game Post Title</h5>
                     : <h5>General Post Title</h5>
                 }
-                <Card border="light" key={this.props.index}>
+                <Card border="light">
                     <small className="text-muted">Posted by: user1</small>
                     <Card.Text muted>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an

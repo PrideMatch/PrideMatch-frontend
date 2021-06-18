@@ -17,12 +17,12 @@ export class Forum extends Component {
             case 'games':
                 return <div>
                     {renderForumPost(this.state.someGamePosts, type)}
-                    {renderForumLink("/forums/games")}
+                    {renderForumLink("/forums/games", "See All Posts", "link-colour")}
                 </div>
             case 'general':
                 return <div>
                     {renderForumPost(this.state.someGeneralPosts, type)}
-                    {renderForumLink("/forums/general")}
+                    {renderForumLink("/forums/general", "See All Posts", "link-colour")}
                 </div>
             default:
                 break

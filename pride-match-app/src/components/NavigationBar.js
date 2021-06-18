@@ -27,8 +27,8 @@ export class NavigationBar extends Component {
                         <NavDropdown
                             id="basic-nav-dropdown"  title={this.props.user.name}>
                             <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-                            <Nav.Link as={Link} to="/friends">Friends</Nav.Link>
-                            <Nav.Link as={Link} to="/games">My Games</Nav.Link>
+                            <Nav.Link as={Link} to="/notifications">Notifications</Nav.Link>
+                            <Nav.Link as={Link} to="/teammates">My Teammates</Nav.Link>
                             <NavDropdown.Divider />
                             <Nav.Link onClick={() => this.handleUserLog(googleProvider)}>Logout</Nav.Link>
                         </NavDropdown>
@@ -107,7 +107,7 @@ export class NavigationBar extends Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link as={Link} to="/">Games</Nav.Link>
-                        <Nav.Link as={Link} to="/teammates">Teammates</Nav.Link>
+                        <Nav.Link as={Link} to="/recommendations">Teammates</Nav.Link>
                         <Nav.Link as={Link} to="/forums">Forums</Nav.Link>
                     </Nav>
                     <Nav>
