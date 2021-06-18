@@ -6,6 +6,11 @@ import recommendations from "../assets/recommendations.png";
 import DisplayTeammates from "../components/landing/DisplayTeammates";
 import {renderForumLink} from "../helpers";
 
+// Global State
+import { Context, LoginContext, SaveStateToLocal, LoadStateFromLocal } from "../store";
+import React, { useContext } from "react";
+
+
 export class Recommendations extends Component {
     render() {
         return (
@@ -25,4 +30,17 @@ export class Recommendations extends Component {
     }
 }
 
-export default (Recommendations);
+const FunctionalRecommendations = () => {
+    const {state, setState} = useContext(Context);
+    if (state) {
+        LoadStateFromLocal(setState)
+        console.log("loaded!")
+    } else {
+        console.log("no state present")
+    }
+    return (
+        <Recommendations state={state} setState={setState}/>
+    )
+}
+
+export default (FunctionalRecommendations);

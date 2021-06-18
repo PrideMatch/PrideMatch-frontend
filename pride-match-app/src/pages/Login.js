@@ -11,7 +11,7 @@ import {googleProvider, signOutUser} from "../firebase_config/authMethod";
 import socialMediaAuth from "../service/auth"
 
 // Global State
-import { Context, LoginContext } from "../store";
+import { Context, LoginContext, SaveStateToLocal } from "../store";
 import React, { useContext } from "react";
 
 export class Login extends Component {
@@ -26,6 +26,7 @@ export class Login extends Component {
                 const res = await socialMediaAuth(provider);
                 this.props.setState({...this.props.state,
                     isLoggedIn: true,
+                    isRegistered: true,
                     name: res.displayName,
                     email: res.email,
                     profilePicture: res.photoURL,
@@ -37,11 +38,13 @@ export class Login extends Component {
                 await signOutUser
                 this.props.setState({...this.props.state,
                     isLoggedIn: false,
+                    isRegistered: false,
                     name: "",
                     profilePicture: "",
                     email: ""
                 })
             }
+            SaveStateToLocal(this.props.state)
         }
         return (
             <div className="App background">
