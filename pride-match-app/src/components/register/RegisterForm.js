@@ -76,8 +76,8 @@ export class RegisterForm extends Component {
                         "twitter": this.state.twitter,
                         "discord_id": this.state.discord_id
                     },
-                "interests": this.state.interests.split(','),
-                "games": this.state.games.split(',')
+                "interests": this.state.interests.split(',').map(interest => interest.toLowerCase()),
+                "games": this.state.games.split(',').map(game => game.toLowerCase())
                 
             }
             // TODO change this.props.state's profilePicture and sessionToken

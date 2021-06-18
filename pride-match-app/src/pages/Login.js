@@ -61,7 +61,10 @@ export class Login extends Component {
                 <br/>
                 <br/>
                 <LoginForm />
-                {this.props.state.isLoggedIn ? <Redirect to="/" /> : ""}
+                {this.props.state.isLoggedIn ? <Redirect to={{
+                    pathname: "/",
+                    state: this.props.state
+                }}/> : ""}
             </div>
         )
     }

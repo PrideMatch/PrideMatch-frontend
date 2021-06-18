@@ -4,26 +4,27 @@ import NavigationBar from "./components/NavigationBar";
 import {Image, Row } from "react-bootstrap";
 import DisplayGames from "./components/landing/DisplayGames"
 import "./components/landing/Landing.css"
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import top10games from "./assets/top10games.png";
 
 import { Context, LoadStateFromLocal } from "./store";
 
 function App() {
-    const {state, setState} = useContext(Context);
 
+    const {state, setState} = useContext(Context);
+    
     const game1 = "League of Legends"
     const game2 = "Valorant"
     // const Lol1 = LoL1
     // const Lol2 = valorant
 
 
-    if (state) {
+    if (!state) {
         LoadStateFromLocal(setState)
     }else {
         console.log("no state present")
     }
-
+    
     return (
         <div className="App background">
             <NavigationBar/>
