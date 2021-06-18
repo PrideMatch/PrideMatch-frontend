@@ -1,0 +1,36 @@
+.profile-layout {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    align-items: start;
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    overflow-y: scroll;
+    margin-top: 20px;
+    height: 70vh;
+    font-family: "Noto Sans", cursive, serif, fantasy;
+}
+
+.profile-picture {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+}
+
+.profile-name {
+    color: rgb(75, 48, 146);
+    font-size: 70px;
+    margin-top: 5px;
+}
+
+.profile-info {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 1px;
+    border-style:solid;
+    border-color: lightblue;
+    color: steelblue;
+}

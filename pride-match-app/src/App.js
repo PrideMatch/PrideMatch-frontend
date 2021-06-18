@@ -21,7 +21,6 @@ function App() {
         <div className="App background">
             <NavigationBar/>
             <Image src={top10games} alt="Top 10 Games"/>
-            <h3>Add Search Form?</h3>
             <DisplayGames />
         </div>
     )
