@@ -46,6 +46,11 @@
     align-self: center;
 }
 
+.no-display {
+    color: rgb(75, 48, 146);
+    justify-content: center;
+    display: flex;
+}
 
 
 
