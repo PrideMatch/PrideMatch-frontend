@@ -38,7 +38,7 @@ export class Forum extends Component {
                     {renderForumPost(newestGeneralPosts, type)}
                     {this.state.allGeneralPosts.length === 0
                         ? ""
-                        : renderForumLink("/forums/games", "See All Posts", "link-colour")}
+                        : renderForumLink("/forums/general", "See All Posts", "link-colour")}
                 </div>
             default:
                 break

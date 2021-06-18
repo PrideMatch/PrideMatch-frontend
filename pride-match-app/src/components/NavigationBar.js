@@ -4,9 +4,7 @@ import rainbowLogo from "../assets/PrideMatchRainbow30x30.png"
 import prideMatchWords from "../assets/PrideMatchWords.png"
 import sampleUserIcon from "../assets/SampleUserIcon.png"
 import "./NavigationBar.css"
-import {
-    Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Global State
 import {Context, LoginContext, SaveStateToLocal} from "../store";
