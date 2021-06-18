@@ -129,6 +129,7 @@ export class NavigationBar extends Component {
 const FunctionalNavigationBar = () => {
     const {state, setState} = useContext(Context);
     const {userState, setUserState} = useContext(LoginContext);
+    console.log(state)
     return <NavigationBar user={state} setState={setState} userState={userState} setUserState={setUserState}/>
 }
 
