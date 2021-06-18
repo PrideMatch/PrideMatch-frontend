@@ -1,20 +1,16 @@
 import {Component} from "react";
-// import {Link} from "react-router-dom";
 import {Navbar, Nav, NavDropdown} from "react-bootstrap"
 import rainbowLogo from "../assets/PrideMatchRainbow30x30.png"
 import prideMatchWords from "../assets/PrideMatchWords.png"
-import sampleUser from "../assets/SampleUserIcon.png"
 import "./NavigationBar.css"
 import {
     BrowserRouter as Router,
-    Switch,
     Route,
     Link
 } from "react-router-dom";
 
-import Login from "../pages/Login"
 // Global State
-import {Context} from "../store";
+import {Context, LoginContext} from "../store";
 import React, {useContext} from "react";
 
 // Google Signin
@@ -25,33 +21,32 @@ export class NavigationBar extends Component {
     renderUserNav() {
         return (
             <div>
-                {this.props.user.isLoggedIn &&
-                <div id="user-nav">
-                    <NavDropdown
-                        // title={this.props.name}
-                        className="" id="basic-nav-dropdown"  title={this.props.user.name}>
-                        <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
-                        <Nav.Link as={Link} to="/friends">Friends</Nav.Link>
-                        <Nav.Link as={Link} to="/games">My Games</Nav.Link>
-                        <NavDropdown.Divider />
+                {(this.props.user.isLoggedIn && this.props.userState.completed) ?
+                
+                    <div id="user-nav">
+                        <NavDropdown
+                            className="" id="basic-nav-dropdown"  title={this.props.user.name}>
+                            <Nav.Link as={Link} to="/profile">Profile</Nav.Link>
+                            <Nav.Link as={Link} to="/friends">Friends</Nav.Link>
+                            <Nav.Link as={Link} to="/games">My Games</Nav.Link>
+                            <NavDropdown.Divider />
+                        </NavDropdown>
+                    </div>:
+                    <div></div>
 
-                        {/* make this dynamic, depending if user is logged in */}
-                        {/* <Nav.Link as={Link} to="/logout">Logout</Nav.Link> */}
-                        {/*<a href="#" onClick={this.props.logout}> Logout </a>*/}
-
-                    </NavDropdown>
-                </div>
                 }
             </div>
 
         )
     };
-
     renderUserPic() {
         return (
             <Nav.Item>
                 <Nav.Link as={Link} to="/profile">
-                    <img src={this.props.user.profilePicture} width="30" height="30" alt="Pride Match logo"/>
+                {(this.props.user.isLoggedIn && this.props.userState.completed) ?
+                    <img src={this.props.user.profilePicture} width="30" height="30" alt="Pride Match logo"/> :
+                    ""
+                }
                 </Nav.Link>
             </Nav.Item>
         )
@@ -68,12 +63,22 @@ export class NavigationBar extends Component {
                     sessionToken: res.refreshToken
                 })
                 console.log(res)
+                this.props.setUserState({...this.props.userState, 
+                    completed: true
+                })
             } else if (this.props.user.isLoggedIn) {
                 await signOutUser
                 this.props.setState({...this.props.user,
                     isLoggedIn: false,
                     name: "",
                     profilePicture: ""
+                })
+                this.props.setUserState({
+                    email: "",
+                    password: "",
+                    firstTime: true,
+                    googleFill: false,
+                    completed: false
                 })
             }
 
@@ -105,14 +110,18 @@ export class NavigationBar extends Component {
 
                     <Nav>
                         {
-                            (this.props.user.isLoggedIn) ?
-                                (<Nav.Link onClick={() => handleUserLog(googleProvider)}>Logout</Nav.Link>)
+                            (this.props.user.isLoggedIn && this.props.userState.firstTime) ?
+                                <Nav.Link onClick={() => handleUserLog(googleProvider)}>Logout</Nav.Link>
                                 :
-                                <Route>
+                                <div>
+                                <Route> 
                                     <Nav.Link as={Link} to="/login">Login</Nav.Link>
                                 </Route>
-                        }
-                        <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                                <Route>
+                                    <Nav.Link as={Link} to="/register">Register</Nav.Link>
+                                </Route>
+                                </div>
+                                }
                     </Nav>
 
                     {this.renderUserNav()}
@@ -125,9 +134,9 @@ export class NavigationBar extends Component {
 
 const FunctionalNavigationBar = () => {
     const {state, setState} = useContext(Context);
-    console.log(state)
-
-    return <NavigationBar user={state} setState={setState}/>
+    const {userState, setUserState} = useContext(LoginContext);
+    
+    return <NavigationBar user={state} setState={setState} userState={userState} setUserState={setUserState}/>
 }
 
 export default (FunctionalNavigationBar)

@@ -4,12 +4,15 @@ import { Image, Button, Container } from "react-bootstrap"
 import LoginForm from "../components/login/LoginForm";
 import logo from "../assets/PrideMatchLogoCropped.png"
 import login from "../assets/Login.png"
+import  { Redirect } from 'react-router-dom'
+
+// Google Auth
 import {googleProvider, signOutUser} from "../firebase_config/authMethod";
 import socialMediaAuth from "../service/auth"
 
 // Global State
-import { Context } from "../store";
-import React, {useContext, useState} from "react";
+import { Context, LoginContext } from "../store";
+import React, { useContext } from "react";
 
 export class Login extends Component {
     constructor(props) {
@@ -19,21 +22,24 @@ export class Login extends Component {
 
     render() {
         const handleUserLog = async (provider) => {
-            if (!(this.props.user.isLoggedIn)) {
+            if (!(this.props.state.isLoggedIn)) {
                 const res = await socialMediaAuth(provider);
-                this.props.setState({...this.props.user,
+                this.props.setState({...this.props.state,
                     isLoggedIn: true,
                     name: res.displayName,
+                    email: res.email,
                     profilePicture: res.photoURL,
                     sessionToken: res.refreshToken
                 })
-                console.log(res)
-            } else if (this.props.user.isLoggedIn) {
+                this.props.setUserState({...this.props.userState, completed: true})
+                
+            } else if (this.props.state.isLoggedIn) {
                 await signOutUser
-                this.props.setState({...this.props.user,
+                this.props.setState({...this.props.state,
                     isLoggedIn: false,
                     name: "",
-                    profilePicture: ""
+                    profilePicture: "",
+                    email: ""
                 })
             }
         }
@@ -52,6 +58,7 @@ export class Login extends Component {
                 <br/>
                 <br/>
                 <LoginForm />
+                {this.props.state.isLoggedIn ? <Redirect to="/" /> : ""}
             </div>
         )
     }
@@ -59,10 +66,10 @@ export class Login extends Component {
 
 const FunctionalLogin = () => {
     const {state, setState} = useContext(Context);
-    console.log("context: ", Context);
-    console.log("useContext(context): ", useContext(Context));
+    const {userState, setUserState} = useContext(LoginContext)
+
     return (
-        <Login user={state} setState={setState}/>
+        <Login state={state} setState={setState} userState={userState} setUserState={setUserState}/>
     )
 }
 
