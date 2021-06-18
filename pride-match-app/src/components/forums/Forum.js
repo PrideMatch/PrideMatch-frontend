@@ -32,7 +32,7 @@ export class Forum extends Component {
     render() {
         return (
             <Container className="forum-layout">
-                <h4 className="forum-title">Currently Trending...</h4>
+                <h4 className="forum-title">Currently Posted...</h4>
                 {this.renderSwitch(this.props.type)}
             </Container>
         )

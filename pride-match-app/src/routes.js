@@ -11,6 +11,7 @@ import GamesForum from "./pages/forums/GamesForum";
 import GeneralForum from "./pages/forums/GeneralForum";
 import React from "react";
 import MyTeammates from "./pages/MyTeammates";
+import Notifications from "./pages/Notifications";
 
 export const Routes = (props) => {
 
@@ -29,6 +30,9 @@ export const Routes = (props) => {
                 </Route>
                 <Route exact path="/profile">
                     <Profile />
+                </Route>
+                <Route exact path="/notifications">
+                    <Notifications />
                 </Route>
                 <Route exact path="/teammates">
                     <MyTeammates />
