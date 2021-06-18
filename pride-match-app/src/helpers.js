@@ -56,11 +56,11 @@ export async function sendRegistrationPost(registrationInfo) {
 
     try {
         const res = await axios.post(
-            // POST URL ,
+            "http://localhost:5000/register",
             registrationInfo
         )
         return res
-        
+
     } catch (err) {
         console.log(err) 
         // add proper http error codes
