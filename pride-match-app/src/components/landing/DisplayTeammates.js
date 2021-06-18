@@ -1,5 +1,6 @@
 import {Component} from "react"
 import {Row} from "react-bootstrap"
+import "../../App.css"
 import IndividualTeammate from "./IndividualTeammate";
 
 export class DisplayTeammates extends Component {
@@ -30,13 +31,12 @@ export class DisplayTeammates extends Component {
             <Row>
                 {/*TODO map through all teammates*/}
                 {/*TODO test different # of interests for card size*/}
-                {this.state.arrayToDisplay.map((item, index) => {
-                    if (this.state.arrayToDisplay.length === 0) {
-                        return "No Teammates to Display"
-                    } else {
-                        return <IndividualTeammate type={this.props.type} key={index}/>
-                    }
-                })}
+                {this.state.arrayToDisplay.length === 0
+                    ? <span className="no-display">No Recommendations to Display</span>
+                    : this.state.arrayToDisplay.map((item, index) => {
+                    return <IndividualTeammate type={this.props.type} key={index}/>
+                    })
+                }
             </Row>
         )
     }

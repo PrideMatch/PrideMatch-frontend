@@ -10,3 +10,9 @@
   width: 100% !important;
   min-height: 100vh !important;
 }
+
+.no-display {
+  color: rgb(75, 48, 146);
+  justify-content: center;
+  display: flex;
+}

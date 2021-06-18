@@ -3,6 +3,7 @@ import {Row} from "react-bootstrap";
 import "./Landing.css"
 import GameCard from "./GameCard";
 import LoL1 from "../../assets/LoLGame.jpg";
+import "../../App.css"
 import valorant from "../../assets/valorant.jpg";
 
 export class DisplayGames extends Component {
