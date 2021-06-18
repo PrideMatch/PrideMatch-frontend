@@ -1,11 +1,7 @@
 .App {
   text-align: center;
   font-family: "Noto Sans", serif;
-}
-
-.game-container {
-  padding-right: 10vw;
-  padding-left: 10vw;
+  overflow-x: hidden;
 }
 
 .background {
@@ -13,4 +9,10 @@
   rgb(185, 238, 181),rgb(204, 229, 255),rgb(204, 204, 255));
   width: 100% !important;
   min-height: 100vh !important;
+}
+
+.no-display {
+  color: rgb(75, 48, 146);
+  justify-content: center;
+  display: flex;
 }
