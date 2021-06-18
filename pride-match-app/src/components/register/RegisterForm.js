@@ -419,9 +419,6 @@ const FunctionalRegisterForm = () => {
 
     if (state) {
         LoadStateFromLocal(setState)
-        console.log("loaded!")
-    } else {
-        console.log("no state present")
     }
 
     return (

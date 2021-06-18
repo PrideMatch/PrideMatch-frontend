@@ -51,7 +51,8 @@ export class NavigationBar extends Component {
                             }
                         </Nav.Link>
                     </Nav.Item>
-                    : ""
+                    : 
+                    <div></div>
                 }
             </div>
         )
@@ -62,18 +63,23 @@ export class NavigationBar extends Component {
             const res = await socialMediaAuth(provider);
             this.props.setState({...this.props.user,
                 isLoggedIn: true,
+                isRegistered: false,
                 name: res.displayName,
                 profilePicture: res.photoURL,
                 sessionToken: res.refreshToken
             })
-            console.log(res)
             this.props.setUserState({...this.props.userState,
                 completed: true
             })
+
+            window.location.reload();
+
         } else if (this.props.user.isLoggedIn) {
             await signOutUser
             this.props.setState({...this.props.user,
                 isLoggedIn: false,
+                email:"",
+                isRegistered: false,
                 name: "",
                 profilePicture: ""
             })
@@ -84,8 +90,11 @@ export class NavigationBar extends Component {
                 googleFill: false,
                 completed: false
             })
+            window.location.reload();
         }
+
         SaveStateToLocal(this.props.user)
+
     }
 
     render() {
@@ -134,7 +143,6 @@ export class NavigationBar extends Component {
 const FunctionalNavigationBar = () => {
     const {state, setState} = useContext(Context);
     const {userState, setUserState} = useContext(LoginContext);
-    // console.log(state)
 
     return <NavigationBar user={state} setState={setState} userState={userState} setUserState={setUserState}/>
 }

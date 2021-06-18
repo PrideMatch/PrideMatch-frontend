@@ -26,11 +26,10 @@ export class Notifications extends Component {
 
 const FunctionalNotifications = () => {
     const {state, setState} = useContext(Context);
+    
     if (state) {
         LoadStateFromLocal(setState)
         console.log("loaded!")
-    } else {
-        console.log("no state present")
     }
     return (
         <Notifications state={state} setState={setState}/>

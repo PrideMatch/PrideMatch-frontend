@@ -25,11 +25,9 @@ export class GamesForum extends Component {
 
 const FunctionalGamesForum = () => {
     const {state, setState} = useContext(Context);
+    
     if (state) {
         LoadStateFromLocal(setState)
-        console.log("loaded!")
-    } else {
-        console.log("no state present")
     }
 
     return (
