@@ -24,7 +24,6 @@ export class Forum extends Component {
                 </div>
             case 'games':
                 let newestGamePosts = this.state.allGamePosts.slice(0, displayNumPosts)
-                console.log(newestGamePosts)
                 return <div>
                     {renderForumPost(newestGamePosts, type)}
                     {this.state.allGamePosts.length === 0
@@ -33,7 +32,6 @@ export class Forum extends Component {
                 </div>
             case 'general':
                 let newestGeneralPosts = this.state.allGeneralPosts.slice(0, displayNumPosts)
-                console.log(newestGeneralPosts)
                 return <div>
                     {renderForumPost(newestGeneralPosts, type)}
                     {this.state.allGeneralPosts.length === 0

@@ -1,0 +1,89 @@
+.profile-layout {
+    text-align: center;
+    align-items: center !important;
+    margin-top: 10px;
+    font-family: "Noto Sans", cursive, serif, fantasy;
+}
+
+.info-container {
+    align-items: center !important;
+}
+
+.profile-picture {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    margin-left: 30vw !important;
+}
+
+.profile-name {
+    color: rgb(75, 48, 146);
+    font-size: 70px;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.profile-header {
+    margin-left: 8% !important;
+}
+
+.header-container {
+    color: rgb(75, 48, 146);
+    justify-content: center;
+}
+
+.row-container{
+    margin-left: 14% !important;
+}
+
+.social-container{
+    margin-left: 17% !important;
+}
+
+.prof-lgbtq-info {
+    padding-top: 5px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    border-width: 1px;
+    border-style:solid;
+    border-color: lightblue;
+    margin: 20px;
+    left: 10px;
+    color: steelblue;
+}
+
+.prof-textarea-about {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    border-width: 1px;
+    border-style:solid;
+    margin: 20px;
+    left: 10px;
+    border-color: lightblue;
+    color: steelblue;
+}
+
+.prof-textarea-games {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    border-width: 1px;
+    border-style:solid;
+    margin: 20px;
+    left: 10px;
+    border-color: lightblue;
+    color: steelblue;
+}
+
+.prof-textarea-interest {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    border-width: 1px;
+    border-style:solid;
+    margin: 20px;
+    left: 10px;
+    border-color: lightblue;
+    color: steelblue;
+}
