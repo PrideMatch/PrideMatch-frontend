@@ -24,6 +24,7 @@ export class Register extends Component {
                 <Image src={logo} alt="Pride Match Logo"/>
                 <br/>
                 <Image src={register} alt="register"/>
+                <br/>
                 <RegisterForm />
                 <br/>
                 <div className="login-label">

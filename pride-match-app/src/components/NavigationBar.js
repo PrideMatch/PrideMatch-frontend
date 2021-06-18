@@ -46,7 +46,7 @@ export class NavigationBar extends Component {
                     ?
                     <Nav.Item>
                         <Nav.Link as={Link} to="/profile">
-                            <img src={this.props.user.profilePicture} width="30" height="30" alt="Pride Match logo"/>
+                            <img src={this.props.user.profilePicture} width="30" height="30" alt="Profile Pic"/>
                         </Nav.Link>
                     </Nav.Item>
                     : ""
