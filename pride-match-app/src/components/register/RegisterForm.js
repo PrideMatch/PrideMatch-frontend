@@ -21,10 +21,10 @@ export class RegisterForm extends Component {
             confirmPassword: "",
             email: "",
             confirmEmail: "",
-            regOrientation: "",
+            regOrientation: ORIENTATION_LIST[0],
             age: "",
-            pronouns: "",
-            gender: "",
+            pronouns: PRONOUNS_LIST[0],
+            gender: GENDER_LIST[0],
             displayPronouns: false,
             displayOrientation: false,
             displayGender: false,
@@ -44,10 +44,23 @@ export class RegisterForm extends Component {
 
     handleSubmit = () => {
         // TODO go to landing page
-        // NotificationManager.success("Welcome back!", "", NOTIFICATION_TIMER)
+        let requiredStates = [this.state.username, this.state.password, this.state.confirmPassword, this.state.email,
+            this.state.confirmEmail,this.state.regOrientation, this.state.age, this.state.pronouns, this.state.gender]
+        if (requiredStates.includes("") || this.state.games.length === 0) {
+            NotificationManager.warning("Please fill out all required (*) information!")
+            console.log(this.state)
+        } else if (this.state.email.toLowerCase() !== this.state.confirmEmail.toLowerCase()) {
+            NotificationManager.warning("Emails do not match!", "", NOTIFICATION_TIMER)
+            console.log(this.state.email)
+            console.log(this.state.confirmEmail)
+        } else if (this.state.password.toLowerCase() !== this.state.confirmPassword.toLowerCase()) {
+            NotificationManager.warning("Passwords do not match!", "", NOTIFICATION_TIMER)
+        } else {
+            NotificationManager.success("Welcome to Pride Match, " + this.state.username + "!", "", NOTIFICATION_TIMER)
+            this.props.setUserState({...this.props.userState, completed: true})
+            console.log("Registration Details: ", this.state)
+        }
         // NotificationManager.warning("Incorrect username or password", "", NOTIFICATION_TIMER)
-        this.props.setUserState({...this.props.userState, completed: true})
-        console.log("Registration Details: ", this.state)
     }
 
     handleGoogleAutofill = async (provider) => {
@@ -304,6 +317,7 @@ export class RegisterForm extends Component {
                                         as="textarea"
                                         onChange={this.setGames}
                                         placeholder="Enter the game(s) you play"/>
+                                    <Form.Text muted>Please separate games with commas</Form.Text>
                                 </Form.Group>
                             </Col>
                         </Row>
@@ -316,6 +330,20 @@ export class RegisterForm extends Component {
                                         as="textarea"
                                         onChange={this.setInterests}
                                         placeholder="Enter your interest(s)"/>
+                                    <Form.Text muted>Please separate interests with commas</Form.Text>
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
+                                <Form.Group id="register-interests">
+                                    <Form.Label>About Me</Form.Label>
+                                    <Form.Control
+                                        rows={2}
+                                        as="textarea"
+                                        onChange={this.setInterests}
+                                        placeholder="Add anything extra!"/>
+                                    <Form.Text muted>Max 255 Characters</Form.Text>
                                 </Form.Group>
                             </Col>
                         </Row>
