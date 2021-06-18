@@ -1,5 +1,5 @@
 .login-form {
-    padding-top: 10px;
+    padding-top: 15px;
     padding-bottom: 10px;
     display: flex;
     justify-content: center;
@@ -14,6 +14,8 @@
     background-image: linear-gradient(to right, rgb(255, 204, 204),rgb(255, 229, 204),rgb(255, 255, 204),
     rgb(185, 238, 181),rgb(204, 229, 255),rgb(204, 204, 255));
     color: black !Important;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .colourful-button:hover {
