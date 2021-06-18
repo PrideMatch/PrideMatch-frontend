@@ -2,11 +2,12 @@ import {Component} from "react"
 import {Row} from "react-bootstrap"
 import "../../App.css"
 import IndividualTeammate from "./IndividualTeammate";
+import { teammates } from "../../sampleData"
 
 export class DisplayTeammates extends Component {
     constructor(props) {
         super(props);
-        this.state = { arrayToDisplay: ["user1", "user2", "user3", "user4", "user5", "user6", "user7"] }
+        this.state = { arrayToDisplay: teammates }
     }
 
     componentDidMount() {
@@ -34,7 +35,8 @@ export class DisplayTeammates extends Component {
                 {this.state.arrayToDisplay.length === 0
                     ? <span className="no-display">No Teammates to Display</span>
                     : this.state.arrayToDisplay.map((item, index) => {
-                    return <IndividualTeammate type={this.props.type} key={index}/>
+                    return <IndividualTeammate array={this.state.arrayToDisplay} type={this.props.type} index={index}
+                                               key={index}/>
                     })
                 }
             </Row>

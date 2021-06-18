@@ -7,5 +7,5 @@ export const GENDER_LIST = ["Cisgender", "Genderqueer",
     "Gender Fluid", "Gender Neutral", "Non-Binary", "Transgender", "Two-Spirit","Other",
     "Prefer Not to Answer"]
 
-export const PRONOUNS_LIST = ["e/ey", "he", "per", "she", "sie", "they", "ve", "zie", "Other",
+export const PRONOUNS_LIST = ["E/Ey", "He", "Per", "She", "Sie", "They", "Ve", "Zie", "Other",
     "Prefer Not to Answer"]
