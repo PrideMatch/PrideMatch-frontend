@@ -9,7 +9,8 @@ export class IndividualTeammate extends Component {
     constructor(props) {
         super(props);
         this.state = { games: ["League of Legends", "MW3", "BattleField", "Rainbow Six Siege"],
-            interests: ["Swimming", "Sewing", "Drawing"]}
+            interests: ["Swimming", "Sewing", "Drawing"], twitter: "yuukeyyx", facebook: "yuukeyyx",
+        discord: "yuukeyyx#0000", instagram: "yuukeyyx"}
     }
 
     render() {
@@ -34,6 +35,10 @@ export class IndividualTeammate extends Component {
                                 return getHobby(this.state.interests, interest, index)
                             })}
                         </Card.Text>
+                        <Card.Text>Discord: {this.state.discord}</Card.Text>
+                        <a href={"https://twitter.com/"+this.state.twitter} target="_blank">Twitter </a>
+                        <a href={"https://instagram.com/"+this.state.instagram} target="_blank">Instagram </a>
+                        <a href={"https://facebook.com/"+this.state.facebook} target="_blank">Facebook </a>
                     </Card.Body>
                     {this.props.type === "teammates"
                         ? <DeleteTeammate teammateId="1"/>
