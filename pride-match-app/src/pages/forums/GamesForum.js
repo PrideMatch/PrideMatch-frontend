@@ -5,6 +5,10 @@ import games from "../../assets/games.png";
 import {Image} from "react-bootstrap";
 import Forum from "../../components/forums/Forum"
 
+// Global State
+import { Context, LoadStateFromLocal } from "../../store";
+import React, { useContext } from "react";
+
 export class GamesForum extends Component {
     render() {
         return (
@@ -19,4 +23,19 @@ export class GamesForum extends Component {
     }
 }
 
-export default (GamesForum);
+const FunctionalGamesForum = () => {
+    const {state, setState} = useContext(Context);
+    if (state) {
+        LoadStateFromLocal(setState)
+        console.log("loaded!")
+    } else {
+        console.log("no state present")
+    }
+
+    return (
+        <GamesForum state={state} setState={setState} />
+    )
+}
+
+
+export default (FunctionalGamesForum);

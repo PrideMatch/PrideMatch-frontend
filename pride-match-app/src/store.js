@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 const initialState = {
     isLoggedIn: false,
+    isRegistered: false,
     name: "",
     email: "",
     profilePicture: "",
@@ -15,6 +16,27 @@ const userRegistration = {
     googleFill: false,
     completed: false
 }
+
+export const LoadStateFromLocal = (setState) => {
+
+    const data = localStorage.getItem("userState"); // userState = local variable of saved state
+
+    useEffect(() => {
+        const handleLoadFromLocal = () => {
+            if (data) {
+                setState(JSON.parse(data));
+            }
+        }
+        handleLoadFromLocal()
+    }, [])
+    
+}   
+
+export const SaveStateToLocal = (state) => {
+    localStorage.setItem("userState", JSON.stringify(state))
+}
+
+
 
 export const Context = React.createContext(initialState);
 export const LoginContext = React.createContext(userRegistration);
