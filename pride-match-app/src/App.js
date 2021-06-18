@@ -15,8 +15,8 @@ function App() {
 
     const game1 = "League of Legends"
     const game2 = "Valorant"
-    const Lol1 = LoL1
-    const Lol2 = valorant
+    // const Lol1 = LoL1
+    // const Lol2 = valorant
 
     if (state) {
         LoadStateFromLocal(setState)
