@@ -12,8 +12,8 @@ export class Recommendations extends Component {
                 <Image src={teammateRecommdations} alt="Teammate Recommendations"/>
                 <Row className="game-container" xs={1} md={2} lg={4}>
                     {/*TODO make recommendations dynamic*/}
-                    <IndividualTeammate key={"1"}/>
-                    <IndividualTeammate key={"2"}/>
+                    <IndividualTeammate index={"1"}/>
+                    <IndividualTeammate index={"2"}/>
                 </Row>
             </div>
         )

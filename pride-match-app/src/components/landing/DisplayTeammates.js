@@ -8,14 +8,14 @@ export class DisplayTeammates extends Component {
             <Row>
                 {/*TODO map through all teammates*/}
                 {/*TODO test different # of interests for card size*/}
-                <IndividualTeammate key={"1"}/>
-                <IndividualTeammate key={"2"}/>
-                <IndividualTeammate key={"3"}/>
-                <IndividualTeammate key={"4"}/>
-                <IndividualTeammate key={"5"}/>
-                <IndividualTeammate key={"6"}/>
-                <IndividualTeammate key={"7"}/>
-                <IndividualTeammate key={"8"}/>
+                <IndividualTeammate index={"1"}/>
+                <IndividualTeammate index={"2"}/>
+                <IndividualTeammate index={"3"}/>
+                <IndividualTeammate index={"4"}/>
+                <IndividualTeammate index={"5"}/>
+                <IndividualTeammate index={"6"}/>
+                <IndividualTeammate index={"7"}/>
+                <IndividualTeammate index={"8"}/>
             </Row>
         )
     }

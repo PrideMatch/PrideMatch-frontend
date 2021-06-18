@@ -14,7 +14,7 @@ export class IndividualTeammate extends Component {
     render() {
         return (
             <Col xs={4}>
-                <Card className="teammate-card">
+                <Card className="teammate-card" key={this.props.index}>
                     <Image
                         roundedCircle={true}
                         className="teammate-img"
