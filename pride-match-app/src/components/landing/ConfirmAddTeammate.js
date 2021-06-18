@@ -3,7 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import { NotificationManager } from "react-notifications";
 import { NOTIFICATION_TIMER } from "../../constants"
 
-export class ConfirmAddFriend extends Component {
+export class ConfirmAddTeammate extends Component {
     constructor(props) {
         super(props);
         this.state = { showConfirmation: false}
@@ -26,9 +26,9 @@ export class ConfirmAddFriend extends Component {
     render() {
         return (
             <div>
-                <Button block variant="info" onClick={this.handleConfirmation}>Add Friend</Button>
+                <Button block variant="info" onClick={this.handleConfirmation}>Add Teammate</Button>
                 <Modal show={this.state.showConfirmation} onHide={this.handleClose}>
-                    <Modal.Header>Add Friend Confirmation</Modal.Header>
+                    <Modal.Header>Add Teammate Confirmation</Modal.Header>
                     <Modal.Body>
                         <text>Would you like to add this user?</text>
                     </Modal.Body>
@@ -42,4 +42,4 @@ export class ConfirmAddFriend extends Component {
     }
 }
 
-export default (ConfirmAddFriend)
+export default (ConfirmAddTeammate)

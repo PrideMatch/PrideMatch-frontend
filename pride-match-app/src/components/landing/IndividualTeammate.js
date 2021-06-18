@@ -1,8 +1,9 @@
 import {Component} from "react"
-import {Card, Col, Image} from "react-bootstrap"
+import {Card, Col, Image, Button} from "react-bootstrap"
 import sampleUser from "../../assets/SampleUserIcon.png"
-import ConfirmAddFriend from "./ConfirmAddFriend"
-import {getHobby} from "../../helpers";
+import ConfirmAddTeammate from "./ConfirmAddTeammate"
+import DeleteTeammate from "./DeleteTeammate"
+import {getHobby} from "../../helpers"
 
 export class IndividualTeammate extends Component {
     constructor(props) {
@@ -34,7 +35,10 @@ export class IndividualTeammate extends Component {
                             })}
                         </Card.Text>
                     </Card.Body>
-                    <ConfirmAddFriend />
+                    {this.props.type === "teammates"
+                        ? <DeleteTeammate teammateId="1"/>
+                        : <ConfirmAddTeammate />
+                    }
                 </Card>
             </Col>
         )
