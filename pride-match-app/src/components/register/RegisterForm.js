@@ -15,24 +15,24 @@ import React, { useContext } from "react";
 export class RegisterForm extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
-            username: "", 
+        this.state = {
+            username: "",
             password: "",
-            confirmPassword: "", 
-            email: "", 
-            confirmEmail: "", 
-            regOrientation: "", 
-            gender: "", 
+            confirmPassword: "",
+            email: "",
+            confirmEmail: "",
+            regOrientation: "",
+            gender: "",
             displayOrientation: false,
-            displayGender: false, 
-            games: [], 
-            interests: [], 
-            discord: "", 
-            twitter: "", 
+            displayGender: false,
+            games: [],
+            interests: [],
+            discord: "",
+            twitter: "",
             instagram: ""
         }
         this.listStates = {
-            orientationList: ORIENTATION_LIST, 
+            orientationList: ORIENTATION_LIST,
             genderList: GENDER_LIST
         }
     }
@@ -133,6 +133,12 @@ export class RegisterForm extends Component {
     render() {
         return (
             <Container className="register-form">
+                {this.props.userState.googleFill ?
+                    "" :
+                    <Button
+                        className="colourful-button"
+                        onClick={() => this.handleGoogleAutofill(googleProvider)}>Register with Google</Button>
+                }
                 <Form id="register-form">
                     <Row>
                         <Col>
@@ -297,10 +303,6 @@ export class RegisterForm extends Component {
 
                     <br/>
                     <Button className="colourful-button" onClick={this.handleSubmit}>Register</Button>
-                    {this.props.userState.googleFill ? 
-                        "" : 
-                        <Button className="colourful-button" onClick={() => this.handleGoogleAutofill(googleProvider)}>Register with Google</Button>
-}
                 </Form>
             </Container>
         )

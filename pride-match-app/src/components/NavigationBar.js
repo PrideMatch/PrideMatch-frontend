@@ -41,14 +41,17 @@ export class NavigationBar extends Component {
 
     renderUserPic() {
         return (
-            <Nav.Item>
-                <Nav.Link as={Link} to="/profile">
-                    {(this.props.user.isLoggedIn && this.props.userState.completed)
-                        ? <img src={this.props.user.profilePicture} width="30" height="30" alt="Pride Match logo"/>
-                        : ""
-                    }
-                </Nav.Link>
-            </Nav.Item>
+            <div>
+                {(this.props.user.isLoggedIn && this.props.userState.completed)
+                    ?
+                    <Nav.Item>
+                        <Nav.Link as={Link} to="/profile">
+                            <img src={this.props.user.profilePicture} width="30" height="30" alt="Pride Match logo"/>
+                        </Nav.Link>
+                    </Nav.Item>
+                    : ""
+                }
+            </div>
         )
     }
 
