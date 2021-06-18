@@ -1,7 +1,7 @@
 import {Component} from "react";
 import { Form, Button, Col, Container, Row } from "react-bootstrap"
 import { NotificationManager } from "react-notifications"; // commented out for now
-import { NOTIFICATION_TIMER, ORIENTATION_LIST, GENDER_LIST } from "../../constants" // commented out for now
+import { NOTIFICATION_TIMER, ORIENTATION_LIST, GENDER_LIST, PRONOUNS_LIST } from "../../constants" // commented out for now
 import "../login/Login.css"
 
 // Google Login
@@ -22,18 +22,23 @@ export class RegisterForm extends Component {
             email: "",
             confirmEmail: "",
             regOrientation: "",
+            age: "",
+            pronouns: "",
             gender: "",
+            displayPronouns: false,
             displayOrientation: false,
             displayGender: false,
             games: [],
             interests: [],
             discord: "",
             twitter: "",
-            instagram: ""
+            instagram: "",
+            facebook: ""
         }
         this.listStates = {
             orientationList: ORIENTATION_LIST,
-            genderList: GENDER_LIST
+            genderList: GENDER_LIST,
+            pronounsList: PRONOUNS_LIST
         }
     }
 
@@ -91,6 +96,19 @@ export class RegisterForm extends Component {
         this.setState({confirmPassword: e.target.value})
     }
 
+    setAge = (e) => {
+        this.setState({age: e.target.value})
+    }
+
+    setPronouns = (e) => {
+        this.setState({pronouns: e.target.value})
+    }
+
+    handlePronounsDisplay = (e) => {
+        let prevPronounsDisplay = this.state.displayPronouns
+        this.setState({displayGender: !prevPronounsDisplay})
+    }
+
     setGender = (e) => {
         this.setState({gender: e.target.value})
     }
@@ -99,7 +117,6 @@ export class RegisterForm extends Component {
         let prevGenderDisplay = this.state.displayGender
         this.setState({displayGender: !prevGenderDisplay})
     }
-
 
     setOrientation = (e) => {
         this.setState({regOrientation: e.target.value})
@@ -128,6 +145,10 @@ export class RegisterForm extends Component {
 
     setInstagram = (e) => {
         this.setState({instagram: e.target.value})
+    }
+
+    setFacebook = (e) => {
+        this.setState({facebook: e.target.value})
     }
 
     render() {
@@ -198,6 +219,39 @@ export class RegisterForm extends Component {
                                 </Form.Group>
                             </Col>
                         </Row>
+                        <Row>
+                            <Col>
+                                <Form.Group id="register-email">
+                                    <Form.Label>*Age</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        onChange={this.setAge}
+                                        placeholder="Enter age"
+                                        value={this.state.age}/>
+                                </Form.Group>
+                            </Col>
+                            <Col>
+                                <Form.Group id="register-gender">
+                                    <Form.Label>*Pronouns</Form.Label>
+                                    <Form.Control
+                                        onChange={this.setPronouns}
+                                        as="select"
+                                        single>
+                                        <option defaultValue="N/A" disabled>Choose...</option>
+                                        {this.listStates.pronounsList.map((pronouns, index) => {
+                                            return <option key={index} value={pronouns}>{pronouns}</option>
+                                        })}
+                                    </Form.Control>
+                                </Form.Group>
+                                <Form.Check
+                                    onChange={this.handlePronounsDisplay}
+                                    type="switch"
+                                    id="pronouns-switch"
+                                    label="Display on Profile"
+                                />
+                            </Col>
+                        </Row>
+                        <br/>
                         <Row>
                             <Col>
                                 <Form.Group id="register-gender">
@@ -296,6 +350,17 @@ export class RegisterForm extends Component {
                                 </Form.Group>
                             </Col>
                             <Col>
+                                <Form.Group id="register-discord">
+                                    <Form.Label>Facebook</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        onChange={this.setFacebook}
+                                        placeholder="Enter Facebook username"/>
+                                </Form.Group>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col>
                                 <Form.Group controlId="formFile" className="mb-3">
                                     <Form.Label>Upload Image for Profile Picture</Form.Label>
                                     <Form.Control type="file"/>
@@ -303,7 +368,6 @@ export class RegisterForm extends Component {
                                 </Form.Group>
                             </Col>
                         </Row>
-
                         <br/>
                         <Button className="colourful-button" onClick={this.handleSubmit}>Register</Button>
                     </Form>
