@@ -19,7 +19,7 @@ export class DisplayTeammates extends Component {
             case 'recommend':
                 // TODO get LIST of recommended teammates with similar games and interests
                 break;
-            case 'friends':
+            case 'teammates':
                 // TODO get LIST of friends
                 break;
         }

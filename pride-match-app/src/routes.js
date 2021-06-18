@@ -10,6 +10,7 @@ import Recommendations from "./pages/Recommendations"
 import GamesForum from "./pages/forums/GamesForum";
 import GeneralForum from "./pages/forums/GeneralForum";
 import React from "react";
+import MyTeammates from "./pages/MyTeammates";
 
 export const Routes = (props) => {
 
@@ -20,7 +21,7 @@ export const Routes = (props) => {
                 <Route exact path="/">
                     <App />
                 </Route>
-                <Route exact path="/teammates">
+                <Route exact path="/recommendations">
                     <Recommendations />
                 </Route>
                 <Route exact path="/forums">
@@ -28,6 +29,9 @@ export const Routes = (props) => {
                 </Route>
                 <Route exact path="/profile">
                     <Profile />
+                </Route>
+                <Route exact path="/teammates">
+                    <MyTeammates />
                 </Route>
                 <Route exact path="/login">
                     <Login />
