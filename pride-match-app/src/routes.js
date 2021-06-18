@@ -9,14 +9,12 @@ import Register from "./pages/Register";
 import Recommendations from "./pages/Recommendations"
 import GamesForum from "./pages/forums/GamesForum";
 import GeneralForum from "./pages/forums/GeneralForum";
-import Store from "./store";
 import React from "react";
 
 export const Routes = (props) => {
 
     return (
         <div>
-            <Store>
             <NotificationContainer/>
             <Switch>
                 <Route exact path="/">
@@ -44,7 +42,6 @@ export const Routes = (props) => {
                     <GeneralForum />
                 </Route>
             </Switch>
-            </Store>
         </div>
     )
 }
