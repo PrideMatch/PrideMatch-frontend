@@ -1,19 +1,23 @@
 import {Component} from "react";
 import NavigationBar from "../components/NavigationBar";
-import IndividualTeammate from "../components/landing/IndividualTeammate";
-import {Image, Row} from "react-bootstrap";
-import teammateRecommdations from "../assets/teammateRecommdations.png";
-
+import {Image, Row, Button} from "react-bootstrap";
+import teammate from "../assets/teammate.png";
+import recommendations from "../assets/recommendations.png";
+import "../components/recommendations/recommendations.css"
+import DisplayTeammates from "../components/landing/DisplayTeammates";
 export class Recommendations extends Component {
     render() {
         return (
             <div className="App background">
                 <NavigationBar/>
-                <Image src={teammateRecommdations} alt="Teammate Recommendations"/>
-                <Row className="game-container" xs={1} md={2} lg={4}>
+                <Image src={teammate} alt="Teammate"/>
+                <Image className="level-off" src={recommendations} alt="Recommendations"/>
+                <br/>
+                <Button className="colourful-button" variant="link">View All My Teammates</Button>
+                <Row className="game-container">
                     {/*TODO make recommendations dynamic*/}
-                    <IndividualTeammate index={"1"}/>
-                    <IndividualTeammate index={"2"}/>
+                    {/*note: recommended teammates will come from recommended API call*/}
+                    <DisplayTeammates type="recommend"/>
                 </Row>
             </div>
         )

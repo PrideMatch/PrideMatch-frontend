@@ -8,7 +8,7 @@ export class IndividualTeammate extends Component {
     constructor(props) {
         super(props);
         this.state = { games: ["League of Legends", "MW3", "BattleField", "Rainbow Six Siege"],
-        interests: ["Swimming", "Sewing", "Drawing"]}
+            interests: ["Swimming", "Sewing", "Drawing"]}
     }
 
     render() {
