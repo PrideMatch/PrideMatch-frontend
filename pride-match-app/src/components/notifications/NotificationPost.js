@@ -6,6 +6,10 @@ import {NOTIFICATION_TIMER} from "../../constants";
 
 export class NotificationPost extends Component {
 
+    highlightedStyles = {
+        color: 'peru'
+    }
+
     handleAccept = () => {
         NotificationManager.success("User added!", "",NOTIFICATION_TIMER)
     }
@@ -20,12 +24,13 @@ export class NotificationPost extends Component {
                 <Card border="light">
                     <Card.Body>
                         <Card.Text className="notification-text" muted>
-                            User wants to add you! They also play <span style={{color: 'peru'}}> [enter 3 games]
-                            </span> and enjoy <span style={{color: 'peru'}}> [3 interests]</span>.
+                            <span style={this.highlightedStyles}> User </span> wants to add you!
+                            They also play <span style={this.highlightedStyles}> [enter 3 games]
+                            </span> and enjoy <span style={this.highlightedStyles}> [3 interests]</span>.
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer className="notification-footer">
-                        <small className="text-muted">Date: June 18th, 2021</small>
+                        <small className="text-muted">Requested on June 18th, 2021</small>
                         <Button className="notification-button" variant="outline-info" onClick={this.handleAccept}>Accept</Button>
                         <Button className="notification-button" variant="outline-danger" onClick={this.handleDecline}>Decline</Button>
                     </Card.Footer>

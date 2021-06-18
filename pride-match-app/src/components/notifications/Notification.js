@@ -13,10 +13,6 @@ export class Notification extends Component {
                 <NotificationPost key="4"/>
                 <NotificationPost key="5"/>
                 <NotificationPost key="6"/>
-                <NotificationPost key="7"/>
-                <NotificationPost key="8"/>
-                <NotificationPost key="9"/>
-                <NotificationPost key="10"/>
             </div>
         )
     }
