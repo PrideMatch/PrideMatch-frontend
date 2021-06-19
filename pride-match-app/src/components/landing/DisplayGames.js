@@ -2,14 +2,13 @@ import React, {Component} from "react";
 import {Row} from "react-bootstrap";
 import "./Landing.css"
 import GameCard from "./GameCard";
-import LoL1 from "../../assets/LoLGame.jpg";
+import { games } from "../../sampleData"
 import "../../App.css"
-import valorant from "../../assets/valorant.jpg";
 
 export class DisplayGames extends Component {
     constructor(props) {
         super(props)
-        this.state = { allGames: [{name: "League of Legends", pic: LoL1}, {name: "Valorant", pic: valorant}] }
+        this.state = { allGames: games }
     }
 
     render() {
@@ -19,7 +18,7 @@ export class DisplayGames extends Component {
                 ? <span className="no-display">No Games to Display</span>
                 : //TODO make API call for games
                     this.state.allGames.map((game, index) => {
-                    return <GameCard gameID={"1"} gameName={game.name} gamePic={game.pic}/>
+                    return <GameCard games={this.state.allGames} key={index} index={index}/>
                     })
                 }
             </Row>

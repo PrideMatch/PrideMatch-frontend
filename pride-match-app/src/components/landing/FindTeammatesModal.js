@@ -2,6 +2,7 @@ import {Component} from "react";
 import {Button, Modal} from "react-bootstrap"
 import "./Landing.css"
 import DisplayTeammates from "./DisplayTeammates"
+import "./../login/Login.css"
 
 export class FindTeammatesModal extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ export class FindTeammatesModal extends Component {
     render() {
         return (
             <div>
-                <Button onClick={this.handleFind}>Find Teammates!</Button>
+                <Button className="colourful-button" onClick={this.handleFind}>Find Teammates!</Button>
                 <Modal
                     size={"lg"}
                     show={this.state.showModal}
