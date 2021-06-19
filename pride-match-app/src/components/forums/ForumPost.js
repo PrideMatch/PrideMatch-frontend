@@ -19,11 +19,10 @@ export class ForumPost extends Component {
                     : <h5>General Post Title</h5>
                 }
                 <Card border="light">
-                    <small className="text-muted">Posted by: user1</small>
+                    <small className="text-muted">Posted by: user</small>
                     <Card.Text muted>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                    </Card.Text>
+                        unknown printer took a galley of type and scrambled it to make a type specimen book.</Card.Text>
                 </Card>
             </Container>
         )

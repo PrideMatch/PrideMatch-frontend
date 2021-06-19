@@ -3,12 +3,13 @@ import { Container } from "react-bootstrap";
 import "./Forum.css"
 import "../../App.css"
 import { renderForumPost, renderForumLink} from "../../helpers";
+import { gameForums } from "../../sampleGameForumData"
+import { generalForums } from "../../sampleGeneralForumData"
 
 export class Forum extends Component {
     constructor(props) {
         super(props)
-        this.state = { allGamePosts:[ "game1", "game2", "game3", "game4", "game4", "game5", "game6", "game7" ],
-            allGeneralPosts: [ "general1", "general2", "general3", "general4", "general5", "general6", "general7" ]}
+        this.state = { allGamePosts: gameForums, allGeneralPosts: generalForums}
     }
 
     renderSwitch(type) {
