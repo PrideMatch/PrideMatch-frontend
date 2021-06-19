@@ -38,5 +38,20 @@ export const generalForums = [
             "Springsteen on Broadway tickets when he noticed the COVID-19 vaccine requirements: his two doses of " +
             "AstraZeneca-Oxford wouldn't be enough for admission."
     },
+    {
+        "title": "Happy International Sushi Day!",
+        "author": "Kiki",
+        "description": "Today is International Sushi Day and a perfect excuse to treat yourself to delicious " +
+            "homemade Sanrio-themed sushi!" +
+            "Hi, everyone! I’m Michael, a San Francisco Bay Area-based food blogger and home chef! My goal is to inspire " +
+            "people to create food that is not only delicious but are beautiful works of art."
+    },
+    {
+        "title":"Vaccine rule for Springsteen Broadway show adds travel uncertainty for AstraZeneca recipients",
+        "author": "Tiffany",
+        "description": "David Screech had already selected his seats and put in his credit card information for " +
+            "Springsteen on Broadway tickets when he noticed the COVID-19 vaccine requirements: his two doses of " +
+            "AstraZeneca-Oxford wouldn't be enough for admission."
+    },
 
 ]

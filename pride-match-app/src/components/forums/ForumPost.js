@@ -14,10 +14,11 @@ export class ForumPost extends Component {
     render() {
         return (
             <Container className="forum-post">
-                {this.props.type === "games"
-                    ? <h5>Game Post Title</h5>
-                    : <h5>General Post Title</h5>
-                }
+                {/*{this.props.type === "games"*/}
+                {/*    ? <h5>Game Post Title</h5>*/}
+                {/*    : <h5>General Post Title</h5>*/}
+                {/*}*/}
+                <h5> Post Title</h5>
                 <Card border="light">
                     <small className="text-muted">Posted by: user</small>
                     <Card.Text muted>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
