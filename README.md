@@ -1,6 +1,8 @@
 # PrideMatch-frontend
 
 ## About
+A React app called Pride Match, where the LGBTQIA+ community and allies can find teammates/friends to game and connect with! Users can browse through a selection of games and add teammates who play the same games and share similar interests shown on their profiles. Their profile can also display their gender, pronouns, and orientation.
+
 The recommendations page suggests teammates based off the users' mutual teammates and other potential 
 teammates' interests and games. If a user is not logged in, then random teammates will be displayed.
 
